@@ -1,17 +1,5 @@
 import { readParams, reducedMotion } from './params.js';
-
-const STYLE_HOST = (host) => {
-  const cs = getComputedStyle(host);
-  if (cs.position === 'static') host.style.position = 'relative';
-  if (cs.display === 'inline') host.style.display = 'block';
-};
-
-// effect name → loader returning the effect's create() fn
-const EFFECTS = {
-  draw: () => import('./effects/draw.js').then((m) => m.createDraw),
-  squiggle: () => import('./effects/squiggle.js').then((m) => m.createSquiggle),
-  sparks: () => import('./effects/sparks.js').then((m) => m.createSparks),
-};
+import { EFFECTS, styleHost } from './registry.js';
 
 class BorderWC extends HTMLElement {
   static get observedAttributes() {
@@ -28,7 +16,7 @@ class BorderWC extends HTMLElement {
   }
 
   connectedCallback() {
-    STYLE_HOST(this);
+    styleHost(this);
     this.#apply();
   }
   disconnectedCallback() {
