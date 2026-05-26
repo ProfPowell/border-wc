@@ -43,6 +43,20 @@ npm install @profpowell/border-wc
 Each attribute can also be set via a matching `--border-wc-*` CSS custom
 property (e.g. `--border-wc-color`), which takes precedence over the attribute.
 
+## Attribute binder (no wrapper)
+
+Opt in once and annotate any element — no `<border-wc>` wrapper needed:
+
+```html
+<script type="module" src="https://unpkg.com/@profpowell/border-wc/attr"></script>
+<article data-border-effect="squiggle">…</article>
+```
+
+The binder applies the **extreme** effects (`squiggle`, `draw`, `sparks`) directly
+to the element and watches the DOM for added/changed/removed nodes. **Base** values
+(`spin`, `pulse`, `march`, …) are owned by vanilla-breeze's CSS and ignored here.
+Params come from `--border-wc-*` custom properties (same knobs as the component).
+
 Part of the "Decorated Layers" family alongside
 [vanilla-breeze](https://github.com/ProfPowell) and `bg-wc`.
 
