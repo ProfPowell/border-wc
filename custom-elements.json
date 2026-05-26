@@ -1,0 +1,390 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/border-wc.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "BorderWC",
+          "members": [
+            {
+              "kind": "field",
+              "name": "#cleanup",
+              "privacy": "private",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "#token",
+              "privacy": "private",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "effect"
+            },
+            {
+              "kind": "method",
+              "name": "refresh"
+            },
+            {
+              "kind": "method",
+              "name": "#teardown",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#apply",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "name": "border-wc:effect-applied",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "border-wc:error",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "effect"
+            },
+            {
+              "name": "color"
+            },
+            {
+              "name": "thickness"
+            },
+            {
+              "name": "speed"
+            },
+            {
+              "name": "radius"
+            },
+            {
+              "name": "animate"
+            },
+            {
+              "name": "mode"
+            },
+            {
+              "name": "motion"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "border-wc",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "border-wc",
+          "declaration": {
+            "name": "BorderWC",
+            "module": "src/border-wc.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "BorderWC",
+          "declaration": {
+            "name": "BorderWC",
+            "module": "src/border-wc.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/color.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "toRGBA",
+          "parameters": [
+            {
+              "name": "css"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "toRGBA",
+          "declaration": {
+            "name": "toRGBA",
+            "module": "src/color.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/params.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "readParams",
+          "parameters": [
+            {
+              "name": "host"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "reducedMotion",
+          "parameters": [
+            {
+              "name": "host"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "resolveRadius",
+          "parameters": [
+            {
+              "name": "host"
+            },
+            {
+              "name": "params"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "readParams",
+          "declaration": {
+            "name": "readParams",
+            "module": "src/params.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "reducedMotion",
+          "declaration": {
+            "name": "reducedMotion",
+            "module": "src/params.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "resolveRadius",
+          "declaration": {
+            "name": "resolveRadius",
+            "module": "src/params.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/perimeter.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "roundedRectPerimeter",
+          "parameters": [
+            {
+              "name": "dims"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "roundedRectPath",
+          "parameters": [
+            {
+              "name": "dims"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "roundedRectSampler",
+          "parameters": [
+            {
+              "name": "dims"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "perimeterPath",
+          "parameters": [
+            {
+              "name": "host"
+            },
+            {
+              "name": "inset",
+              "default": "0"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "perimeterSampler",
+          "parameters": [
+            {
+              "name": "host"
+            },
+            {
+              "name": "inset",
+              "default": "0"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "roundedRectPerimeter",
+          "declaration": {
+            "name": "roundedRectPerimeter",
+            "module": "src/perimeter.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "roundedRectPath",
+          "declaration": {
+            "name": "roundedRectPath",
+            "module": "src/perimeter.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "roundedRectSampler",
+          "declaration": {
+            "name": "roundedRectSampler",
+            "module": "src/perimeter.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "perimeterPath",
+          "declaration": {
+            "name": "perimeterPath",
+            "module": "src/perimeter.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "perimeterSampler",
+          "declaration": {
+            "name": "perimeterSampler",
+            "module": "src/perimeter.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/effects/draw.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "createDraw",
+          "parameters": [
+            {
+              "name": "host"
+            },
+            {
+              "name": "params"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "createDraw",
+          "declaration": {
+            "name": "createDraw",
+            "module": "src/effects/draw.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/effects/sparks.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "createSparks",
+          "parameters": [
+            {
+              "name": "host"
+            },
+            {
+              "name": "params"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "createSparks",
+          "declaration": {
+            "name": "createSparks",
+            "module": "src/effects/sparks.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/effects/squiggle.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "createSquiggle",
+          "parameters": [
+            {
+              "name": "host"
+            },
+            {
+              "name": "params"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "createSquiggle",
+          "declaration": {
+            "name": "createSquiggle",
+            "module": "src/effects/squiggle.js"
+          }
+        }
+      ]
+    }
+  ]
+}
