@@ -5,7 +5,14 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
     minify: false,
-    lib: { entry: 'src/border-wc.js', formats: ['es'], fileName: () => 'border-wc.js' },
+    lib: {
+      entry: {
+        'border-wc': 'src/border-wc.js',
+        'data-border-effect': 'src/data-border-effect.js',
+      },
+      formats: ['es'],
+      fileName: (_format, name) => `${name}.js`,
+    },
   },
   server: { open: '/demos/index.html' },
 });
