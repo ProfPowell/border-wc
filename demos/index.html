@@ -1,53 +1,114 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>border-wc demo</title>
-  <style>
-    :root { color-scheme: light dark; }
-    body {
-      font-family: system-ui, sans-serif;
-      line-height: 1.5;
-      max-width: 48rem;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-    h1 { margin-top: 0; }
-    .grid { display: grid; gap: 2rem; }
-    border-wc { display: block; }
-    blockquote { margin: 0; font-size: 1.25rem; font-style: italic; }
-    button { margin-top: 1rem; font: inherit; padding: 0.4rem 0.8rem; cursor: pointer; }
-  </style>
-</head>
-<body>
-  <h1>border-wc specimens</h1>
-  <p>Three light-DOM border effects wrapping ordinary content.</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>border-wc demo</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        line-height: 1.5;
+        max-width: 48rem;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      h1 {
+        margin-top: 0;
+      }
+      .grid {
+        display: grid;
+        gap: 2rem;
+      }
+      border-wc {
+        display: block;
+      }
+      blockquote {
+        margin: 0;
+        font-size: 1.25rem;
+        font-style: italic;
+      }
+      button {
+        margin-top: 1rem;
+        font: inherit;
+        padding: 0.4rem 0.8rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>border-wc specimens</h1>
+    <p>Three light-DOM border effects wrapping ordinary content.</p>
 
-  <div class="grid">
-    <border-wc effect="squiggle" color="#3b6b3a" animate style="border-radius:12px; padding:1.5rem">
-      <blockquote>
-        &ldquo;The platform under-serves high-touch borders &mdash; so we drew our own.&rdquo;
-      </blockquote>
-    </border-wc>
+    <div class="grid">
+      <border-wc
+        effect="squiggle"
+        color="#3b6b3a"
+        animate
+        style="border-radius: 12px; padding: 1.5rem"
+      >
+        <blockquote>
+          &ldquo;The platform under-serves high-touch borders &mdash; so we drew our own.&rdquo;
+        </blockquote>
+      </border-wc>
 
-    <border-wc effect="draw" speed="1500" id="drawCard" style="border-radius:12px; padding:1.5rem">
-      <h2>Draw effect</h2>
-      <p>The border traces its way around the rounded perimeter, then settles.</p>
-      <button id="redraw" type="button">Replay draw</button>
-    </border-wc>
+      <border-wc
+        effect="draw"
+        speed="1500"
+        id="drawCard"
+        style="border-radius: 12px; padding: 1.5rem"
+      >
+        <h2>Draw effect</h2>
+        <p>The border traces its way around the rounded perimeter, then settles.</p>
+        <button id="redraw" type="button">Replay draw</button>
+      </border-wc>
 
-    <border-wc effect="sparks" color="#d97706" thickness="2" style="border-radius:12px; padding:1.5rem">
-      <h2>Sparks effect</h2>
-      <p>A warm spark chases the edge of this card.</p>
-    </border-wc>
-  </div>
+      <border-wc
+        effect="sparks"
+        color="#d97706"
+        thickness="2"
+        style="border-radius: 12px; padding: 1.5rem"
+      >
+        <h2>Sparks effect</h2>
+        <p>A warm spark chases the edge of this card.</p>
+      </border-wc>
+    </div>
 
-  <script type="module" src="../src/border-wc.js"></script>
-  <script type="module">
-    document.getElementById('redraw').addEventListener('click', () => {
-      document.getElementById('drawCard').refresh();
-    });
-  </script>
-</body>
+    <script type="module" src="../src/border-wc.js"></script>
+    <script type="module">
+      document.getElementById('redraw').addEventListener('click', () => {
+        document.getElementById('drawCard').refresh();
+      });
+    </script>
+
+    <h2>data-border-effect (binder)</h2>
+    <p>No wrapper — the attribute applies the effect to the element itself.</p>
+
+    <div class="grid">
+      <article data-border-effect="squiggle" style="border-radius: 12px; padding: 1.5rem">
+        <h3>squiggle</h3>
+        <p>Squiggle effect via attribute binder — no wrapper element.</p>
+      </article>
+
+      <article data-border-effect="draw" style="border-radius: 12px; padding: 1.5rem">
+        <h3>draw</h3>
+        <p>Draw effect via attribute binder — border traces the perimeter.</p>
+      </article>
+
+      <article data-border-effect="sparks" style="border-radius: 12px; padding: 1.5rem">
+        <h3>sparks</h3>
+        <p>Sparks effect via attribute binder — a spark chases the edge.</p>
+      </article>
+
+      <!-- vanilla-breeze is not loaded in this demo, so this card stays static -->
+      <article data-border-effect="spin" style="border-radius: 12px; padding: 1.5rem">
+        <h3>spin</h3>
+        <p>CSS tier — no overlay. Owned by vanilla-breeze CSS; binder ignores it.</p>
+      </article>
+    </div>
+
+    <script type="module" src="../src/data-border-effect.js"></script>
+  </body>
 </html>
