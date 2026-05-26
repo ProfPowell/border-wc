@@ -67,14 +67,12 @@ test('removing the attribute tears down the overlay', async ({ page }) => {
 test('removing the node tears down its overlay (cleanup runs)', async ({ page }) => {
   await page.goto('/test/binder-page.html');
   await page.waitForFunction(exBound);
-  const cleaned = await page.evaluate(() => {
+  await page.evaluate(() => {
     const el = document.getElementById('ex');
+    window.__removed = el; // keep a ref to the now-detached node
     el.remove();
-    return new Promise((res) =>
-      setTimeout(() => res(!el.querySelector('[data-border-wc]')), 80)
-    );
   });
-  expect(cleaned).toBe(true);
+  await page.waitForFunction(() => !window.__removed.querySelector('[data-border-wc]'));
 });
 
 test('no console errors during binding', async ({ page }) => {

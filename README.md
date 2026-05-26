@@ -57,6 +57,10 @@ to the element and watches the DOM for added/changed/removed nodes. **Base** val
 (`spin`, `pulse`, `march`, …) are owned by vanilla-breeze's CSS and ignored here.
 Params come from `--border-wc-*` custom properties (same knobs as the component).
 
+The module auto-scans on import. For programmatic control it also exports
+`bindBorderEffects(root = document)` (scan a subtree on demand) and `stopWatching()`
+(stop observing future DOM changes).
+
 Part of the "Decorated Layers" family alongside
 [vanilla-breeze](https://github.com/ProfPowell) and `bg-wc`.
 

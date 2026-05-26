@@ -45,7 +45,8 @@ async function applyTo(el) {
   try {
     create = await EFFECTS[value]();
   } catch {
-    return; // failed to load effect module
+    if (bound.get(el)?.token === token) bound.delete(el); // clear so the same value can retry
+    return;
   }
   const cur = bound.get(el);
   if (!cur || cur.token !== token || !el.isConnected) return; // superseded mid-load
