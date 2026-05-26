@@ -22,6 +22,22 @@ npm install @profpowell/border-wc
 </border-wc>
 ```
 
+## Attributes
+
+| Attribute   | Description                                                                                          |
+| ----------- | ---------------------------------------------------------------------------------------------------- |
+| `effect`    | Border effect: `squiggle`, `draw`, or `sparks`.                                                      |
+| `color`     | Stroke/particle color (any CSS color; defaults to `currentColor`).                                   |
+| `thickness` | Stroke width in px.                                                                                  |
+| `speed`     | Animation duration in ms.                                                                            |
+| `radius`    | Corner radius in px (falls back to the host's computed `border-radius`).                             |
+| `animate`   | Boolean; when present, plays the entrance/loop animation.                                            |
+| `mode`      | Effect-specific placement mode (e.g. `center`).                                                      |
+| `motion`    | `auto` \| `reduce` \| `force` — overrides `prefers-reduced-motion`: `reduce` forces static, `force` forces animation, `auto` (default) honors the media query. |
+
+Each attribute can also be set via a matching `--border-wc-*` CSS custom
+property (e.g. `--border-wc-color`), which takes precedence over the attribute.
+
 Part of the "Decorated Layers" family alongside
 [vanilla-breeze](https://github.com/ProfPowell) and `bg-wc`.
 

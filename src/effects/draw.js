@@ -17,7 +17,12 @@ export function createDraw(host, params) {
   host.appendChild(svg);
 
   let raf = 0;
+  let currentOnEnd = null;
   const render = (animateIn) => {
+    if (currentOnEnd) {
+      path.removeEventListener('transitionend', currentOnEnd);
+      currentOnEnd = null;
+    }
     const rect = host.getBoundingClientRect();
     const inset = params.thickness / 2;
     const radius = resolveRadius(host, params);
@@ -39,11 +44,18 @@ export function createDraw(host, params) {
       if (e.propertyName !== 'stroke-dashoffset') return;
       host.dispatchEvent(new CustomEvent('border-wc:draw-complete', { detail: {} }));
       path.removeEventListener('transitionend', onEnd);
+      if (currentOnEnd === onEnd) currentOnEnd = null;
     };
+    currentOnEnd = onEnd;
     path.addEventListener('transitionend', onEnd);
   };
   render(true);
   const ro = new ResizeObserver(() => render(false));
   ro.observe(host);
-  return () => { cancelAnimationFrame(raf); ro.disconnect(); svg.remove(); };
+  return () => {
+    cancelAnimationFrame(raf);
+    if (currentOnEnd) path.removeEventListener('transitionend', currentOnEnd);
+    ro.disconnect();
+    svg.remove();
+  };
 }
