@@ -33,7 +33,7 @@ function teardown(el) {
 async function applyTo(el) {
   const value = extremeValue(el);
   const prev = bound.get(el);
-  if (prev && prev.value === value && prev.cleanup) return; // unchanged, already applied
+  if (prev && prev.value === value) return; // unchanged (applied or load in flight)
   teardown(el);
   if (!value) return; // base / unknown / removed → no-op
 
@@ -61,10 +61,13 @@ async function applyTo(el) {
 
 // Scan a subtree and (re)bind every annotated element.
 export function bindBorderEffects(root = document) {
-  const els = root.querySelectorAll ? root.querySelectorAll('[data-border-effect]') : [];
-  els.forEach(applyTo);
+  if (root.nodeType === 1 && root.hasAttribute('data-border-effect')) applyTo(root);
+  root.querySelectorAll?.('[data-border-effect]').forEach(applyTo);
 }
 
+// Stop watching for future DOM changes. Does NOT tear down already-applied
+// effects — those clean up when their elements are removed or their value
+// changes (while the observer is still connected).
 export function stopWatching() {
   observer?.disconnect();
   observer = null;
