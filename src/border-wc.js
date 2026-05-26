@@ -20,15 +20,33 @@ class BorderWC extends HTMLElement {
   #cleanup = null;
   #token = 0;
 
-  get effect() { return this.getAttribute('effect'); }
-  set effect(v) { v == null ? this.removeAttribute('effect') : this.setAttribute('effect', String(v)); }
+  get effect() {
+    return this.getAttribute('effect');
+  }
+  set effect(v) {
+    v == null ? this.removeAttribute('effect') : this.setAttribute('effect', String(v));
+  }
 
-  connectedCallback() { STYLE_HOST(this); this.#apply(); }
-  disconnectedCallback() { this.#teardown(); }
-  attributeChangedCallback() { if (this.isConnected) this.#apply(); }
-  refresh() { this.#apply(); }
+  connectedCallback() {
+    STYLE_HOST(this);
+    this.#apply();
+  }
+  disconnectedCallback() {
+    this.#teardown();
+  }
+  attributeChangedCallback() {
+    if (this.isConnected) this.#apply();
+  }
+  refresh() {
+    this.#apply();
+  }
 
-  #teardown() { try { this.#cleanup?.(); } catch {} this.#cleanup = null; }
+  #teardown() {
+    try {
+      this.#cleanup?.();
+    } catch {}
+    this.#cleanup = null;
+  }
 
   async #apply() {
     this.#teardown();
@@ -36,7 +54,11 @@ class BorderWC extends HTMLElement {
     if (!name || !EFFECTS[name]) return; // unknown/base value → no-op (CSS tier handles spin/pulse/etc.)
     const token = ++this.#token;
     let create;
-    try { create = await EFFECTS[name](); } catch { return; }
+    try {
+      create = await EFFECTS[name]();
+    } catch {
+      return;
+    }
     if (token !== this.#token || !this.isConnected) return;
     const params = { ...readParams(this), reduce: reducedMotion(this) };
     try {

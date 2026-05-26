@@ -36,10 +36,14 @@ export function roundedRectPath(dims) {
   const a = (x, y) => `A${n(r)} ${n(r)} 0 0 1 ${n(x)} ${n(y)}`;
   return (
     `M${n(ox + r)} ${n(oy)}` +
-    `H${n(ox + w - r)}` + a(ox + w, oy + r) +
-    `V${n(oy + h - r)}` + a(ox + w - r, oy + h) +
-    `H${n(ox + r)}` + a(ox, oy + h - r) +
-    `V${n(oy + r)}` + a(ox + r, oy) +
+    `H${n(ox + w - r)}` +
+    a(ox + w, oy + r) +
+    `V${n(oy + h - r)}` +
+    a(ox + w - r, oy + h) +
+    `H${n(ox + r)}` +
+    a(ox, oy + h - r) +
+    `V${n(oy + r)}` +
+    a(ox + r, oy) +
     'Z'
   );
 }

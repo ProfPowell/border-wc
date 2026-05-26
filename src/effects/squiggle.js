@@ -8,7 +8,12 @@ export function createSquiggle(host, params) {
   const id = `bw-sq-${++uid}`;
   const svg = document.createElementNS(SVGNS, 'svg');
   svg.setAttribute('data-border-wc', 'squiggle');
-  Object.assign(svg.style, { position: 'absolute', inset: '0', overflow: 'visible', pointerEvents: 'none' });
+  Object.assign(svg.style, {
+    position: 'absolute',
+    inset: '0',
+    overflow: 'visible',
+    pointerEvents: 'none',
+  });
   svg.setAttribute('width', '100%');
   svg.setAttribute('height', '100%');
   svg.innerHTML =
@@ -27,7 +32,15 @@ export function createSquiggle(host, params) {
 
   const fit = () => {
     const rect = host.getBoundingClientRect();
-    path.setAttribute('d', roundedRectPath({ width: rect.width, height: rect.height, radius: resolveRadius(host, params), inset: params.thickness / 2 }));
+    path.setAttribute(
+      'd',
+      roundedRectPath({
+        width: rect.width,
+        height: rect.height,
+        radius: resolveRadius(host, params),
+        inset: params.thickness / 2,
+      })
+    );
   };
   fit();
 
@@ -46,5 +59,9 @@ export function createSquiggle(host, params) {
   }
   const ro = new ResizeObserver(fit);
   ro.observe(host);
-  return () => { cancelAnimationFrame(raf); ro.disconnect(); svg.remove(); };
+  return () => {
+    cancelAnimationFrame(raf);
+    ro.disconnect();
+    svg.remove();
+  };
 }

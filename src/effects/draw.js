@@ -6,7 +6,12 @@ const SVGNS = 'http://www.w3.org/2000/svg';
 export function createDraw(host, params) {
   const svg = document.createElementNS(SVGNS, 'svg');
   svg.setAttribute('data-border-wc', 'draw');
-  Object.assign(svg.style, { position: 'absolute', inset: '0', overflow: 'visible', pointerEvents: 'none' });
+  Object.assign(svg.style, {
+    position: 'absolute',
+    inset: '0',
+    overflow: 'visible',
+    pointerEvents: 'none',
+  });
   svg.setAttribute('width', '100%');
   svg.setAttribute('height', '100%');
   const path = document.createElementNS(SVGNS, 'path');
@@ -26,8 +31,12 @@ export function createDraw(host, params) {
     const rect = host.getBoundingClientRect();
     const inset = params.thickness / 2;
     const radius = resolveRadius(host, params);
-    path.setAttribute('d', roundedRectPath({ width: rect.width, height: rect.height, radius, inset }));
-    const len = roundedRectPerimeter({ width: rect.width, height: rect.height, radius, inset }) || 1;
+    path.setAttribute(
+      'd',
+      roundedRectPath({ width: rect.width, height: rect.height, radius, inset })
+    );
+    const len =
+      roundedRectPerimeter({ width: rect.width, height: rect.height, radius, inset }) || 1;
     path.style.transition = 'none';
     path.style.strokeDasharray = String(len);
     if (!animateIn || params.reduce) {

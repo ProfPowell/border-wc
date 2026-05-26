@@ -5,10 +5,18 @@ import { toRGBA } from '../color.js';
 export function createSparks(host, params) {
   const canvas = document.createElement('canvas');
   canvas.setAttribute('data-border-wc', 'sparks');
-  Object.assign(canvas.style, { position: 'absolute', inset: '0', width: '100%', height: '100%', pointerEvents: 'none' });
+  Object.assign(canvas.style, {
+    position: 'absolute',
+    inset: '0',
+    width: '100%',
+    height: '100%',
+    pointerEvents: 'none',
+  });
   host.appendChild(canvas);
   const ctx = canvas.getContext('2d');
-  const color = toRGBA(params.color === 'currentColor' ? getComputedStyle(host).color : params.color);
+  const color = toRGBA(
+    params.color === 'currentColor' ? getComputedStyle(host).color : params.color
+  );
 
   let sampler = () => [0, 0];
   let dpr = 1;
@@ -17,7 +25,12 @@ export function createSparks(host, params) {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = Math.max(1, Math.round(rect.width * dpr));
     canvas.height = Math.max(1, Math.round(rect.height * dpr));
-    sampler = roundedRectSampler({ width: rect.width, height: rect.height, radius: resolveRadius(host, params), inset: params.thickness / 2 });
+    sampler = roundedRectSampler({
+      width: rect.width,
+      height: rect.height,
+      radius: resolveRadius(host, params),
+      inset: params.thickness / 2,
+    });
   };
   fit();
 
@@ -41,10 +54,18 @@ export function createSparks(host, params) {
 
   const io = new IntersectionObserver(([e]) => {
     if (e.isIntersecting && !raf && !params.reduce) raf = requestAnimationFrame(frame);
-    else if (!e.isIntersecting && raf) { cancelAnimationFrame(raf); raf = 0; }
+    else if (!e.isIntersecting && raf) {
+      cancelAnimationFrame(raf);
+      raf = 0;
+    }
   });
   io.observe(host);
   const ro = new ResizeObserver(fit);
   ro.observe(host);
-  return () => { cancelAnimationFrame(raf); io.disconnect(); ro.disconnect(); canvas.remove(); };
+  return () => {
+    cancelAnimationFrame(raf);
+    io.disconnect();
+    ro.disconnect();
+    canvas.remove();
+  };
 }
