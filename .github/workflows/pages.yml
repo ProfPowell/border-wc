@@ -1,0 +1,69 @@
+name: Deploy demo to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Build library
+        run: npm run build
+
+      - name: Assemble demo site
+        run: |
+          mkdir -p _site
+          # The demo imports ../src/border-wc.js, so preserve the demos/ + src/
+          # layout; dist/ ships the built bundle. A root redirect points at it.
+          cp -r demos _site/demos
+          cp -r src _site/src
+          cp -r dist _site/dist
+          cp README.md custom-elements.json _site/
+          cat > _site/index.html <<'HTML'
+          <!doctype html>
+          <html lang="en"><head><meta charset="utf-8">
+          <title>border-wc</title>
+          <meta http-equiv="refresh" content="0; url=./demos/index.html"></head>
+          <body><p><a href="./demos/index.html">border-wc demos &rarr;</a></p></body></html>
+          HTML
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

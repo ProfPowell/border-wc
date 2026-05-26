@@ -1,5 +1,10 @@
 # `<border-wc>`
 
+[![CI](https://github.com/ProfPowell/border-wc/actions/workflows/ci.yml/badge.svg)](https://github.com/ProfPowell/border-wc/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+
+**[Live demo →](https://profpowell.github.io/border-wc/)**
+
 A light-DOM web component for high-touch border effects — squiggle, draw-on,
 sparks — the kind of decorative borders that pure CSS can't pull off. It pairs
 with vanilla-breeze's CSS-tier `data-border-effect` (spin / pulse / march): use
