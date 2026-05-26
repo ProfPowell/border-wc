@@ -9,7 +9,7 @@ export default [
       globals: {
         window: 'readonly', document: 'readonly', customElements: 'readonly',
         HTMLElement: 'readonly', CustomEvent: 'readonly', SVGElement: 'readonly',
-        IntersectionObserver: 'readonly', ResizeObserver: 'readonly',
+        IntersectionObserver: 'readonly', ResizeObserver: 'readonly', MutationObserver: 'readonly',
         requestAnimationFrame: 'readonly', cancelAnimationFrame: 'readonly',
         getComputedStyle: 'readonly', matchMedia: 'readonly', performance: 'readonly',
         console: 'readonly',
