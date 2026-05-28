@@ -5,12 +5,13 @@
 
 **[Live site →](https://profpowell.github.io/border-wc/)** — try the [playground](https://profpowell.github.io/border-wc/docs/), read the [API](https://profpowell.github.io/border-wc/docs/api.html), or browse [themed demos](https://profpowell.github.io/border-wc/demos/).
 
-A light-DOM web component for high-touch border effects — squiggle, draw-on,
-sparks — the kind of decorative borders that pure CSS can't pull off. It pairs
-with vanilla-breeze's CSS-tier `data-border-effect` (spin / pulse / march): use
-the CSS tier for cheap, always-on motion, and reach for `<border-wc>` when you
-need SVG/canvas-driven effects. It reads your design tokens (CSS custom
-properties) so borders stay on-brand without extra config.
+A light-DOM web component for high-touch border effects — seventeen of them,
+from lightning bolts and flames to grass, vines, ASCII boxes, barbed wire, and
+psychedelic rainbows — the kind of decorative borders that pure CSS can't pull
+off. It pairs with vanilla-breeze's CSS-tier `data-border-effect` (spin / pulse
+/ march): use the CSS tier for cheap, always-on motion, and reach for
+`<border-wc>` when you need SVG/canvas-driven effects. It reads your design
+tokens (CSS custom properties) so borders stay on-brand without extra config.
 
 ## Install
 
@@ -31,7 +32,7 @@ npm install @profpowell/border-wc
 
 | Attribute   | Description                                                                                          |
 | ----------- | ---------------------------------------------------------------------------------------------------- |
-| `effect`    | Border effect: `squiggle`, `draw`, or `sparks`.                                                      |
+| `effect`    | One of: `lightning`, `flames`, `glitch`, `grass`, `vines`, `fireflies`, `ascii`, `stitching`, `typewriter`, `barbed-wire`, `rope`, `scallop`, `psychedelic`, `plasma`, `squiggle`, `draw`, `sparks`. |
 | `color`     | Stroke/particle color (any CSS color; defaults to `currentColor`).                                   |
 | `thickness` | Stroke width in px.                                                                                  |
 | `speed`     | Animation duration in ms.                                                                            |
@@ -52,8 +53,8 @@ Opt in once and annotate any element — no `<border-wc>` wrapper needed:
 <article data-border-effect="squiggle">…</article>
 ```
 
-The binder applies the **extreme** effects (`squiggle`, `draw`, `sparks`) directly
-to the element and watches the DOM for added/changed/removed nodes. **Base** values
+The binder applies the **extreme** effects (all seventeen) directly to the
+element and watches the DOM for added/changed/removed nodes. **Base** values
 (`spin`, `pulse`, `march`, …) are owned by vanilla-breeze's CSS and ignored here.
 Params come from `--border-wc-*` custom properties (same knobs as the component).
 

@@ -61,7 +61,7 @@
         <table>
           <thead><tr><th>Attribute</th><th>Description</th></tr></thead>
           <tbody>
-            <tr><td><code>effect</code></td><td>One of <code>squiggle</code>, <code>draw</code>, <code>sparks</code>.</td></tr>
+            <tr><td><code>effect</code></td><td>One of seventeen effects — see the <a href="#catalog">Effects catalog</a> below.</td></tr>
             <tr><td><code>color</code></td><td>Stroke / particle color (any CSS color; defaults to <code>currentColor</code>).</td></tr>
             <tr><td><code>thickness</code></td><td>Stroke width in px (default 2).</td></tr>
             <tr><td><code>speed</code></td><td>Animation duration in ms (default 1000).</td></tr>
@@ -88,9 +88,38 @@
       </ul>
     </section>
 
+    <section id="catalog">
+      <h2>Effects catalog</h2>
+      <p>Seventeen effects ship today, grouped into six families. Each behaves under <code>prefers-reduced-motion: reduce</code> — motion-heavy effects render a static end-state, one-shot effects skip the reveal animation.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Effect</th><th>Family</th><th>Renderer</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><code>lightning</code></td><td>Energy</td><td>canvas</td><td>Jagged glowing bolts strike random perimeter points.</td></tr>
+            <tr><td><code>flames</code></td><td>Energy</td><td>canvas</td><td>Particle fire spawning along the path.</td></tr>
+            <tr><td><code>glitch</code></td><td>Energy</td><td>svg</td><td>RGB-split stroked paths with random offsets.</td></tr>
+            <tr><td><code>grass</code></td><td>Organic</td><td>canvas</td><td>Blades grow outward and sway.</td></tr>
+            <tr><td><code>vines</code></td><td>Organic</td><td>svg</td><td>One-shot path reveal + leaves popping in.</td></tr>
+            <tr><td><code>fireflies</code></td><td>Organic</td><td>canvas</td><td>Glowing points drifting around the path.</td></tr>
+            <tr><td><code>ascii</code></td><td>Retro/Craft</td><td>svg text</td><td>Monospace + - | characters at corners and edges (one-shot reveal).</td></tr>
+            <tr><td><code>stitching</code></td><td>Retro/Craft</td><td>svg</td><td>Dashed stitches sew themselves around the perimeter.</td></tr>
+            <tr><td><code>typewriter</code></td><td>Retro/Craft</td><td>svg text</td><td>Per-char reveal; use <code>data-text</code> on the host for custom glyphs.</td></tr>
+            <tr><td><code>barbed-wire</code></td><td>Pattern</td><td>svg</td><td>Wire path + rotated four-point barbs.</td></tr>
+            <tr><td><code>rope</code></td><td>Pattern</td><td>svg</td><td>Two offset dashed strands suggesting a twist.</td></tr>
+            <tr><td><code>scallop</code></td><td>Pattern</td><td>svg</td><td>Half-circle bumps oriented along the outward normal.</td></tr>
+            <tr><td><code>psychedelic</code></td><td>Trippy</td><td>svg</td><td>Rainbow gradient stroke + hue-rotate + marching dashes.</td></tr>
+            <tr><td><code>plasma</code></td><td>Trippy</td><td>canvas</td><td>HSL-cycling glow piecewise along the perimeter.</td></tr>
+            <tr><td><code>squiggle</code></td><td>Originals</td><td>svg</td><td>Hand-drawn turbulence on a stroked path.</td></tr>
+            <tr><td><code>draw</code></td><td>Originals</td><td>svg</td><td>One-shot stroke-on reveal (fires <code>border-wc:draw-complete</code>).</td></tr>
+            <tr><td><code>sparks</code></td><td>Originals</td><td>canvas</td><td>Comet-style indicator orbiting the perimeter.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <section id="data-border-effect">
       <h2>Attribute binder — <code>data-border-effect</code></h2>
-      <p>border-wc shares the <code>data-border-effect</code> attribute with vanilla-breeze's base tier. Base values (<code>spin</code>, <code>pulse</code>, <code>march</code>, <code>hue-cycle</code>, <code>breathe</code>, <code>corner-trace</code>) are owned by vanilla-breeze's CSS — border-wc ignores them. Extreme values (<code>squiggle</code>, <code>draw</code>, <code>sparks</code>) are handled here.</p>
+      <p>border-wc shares the <code>data-border-effect</code> attribute with vanilla-breeze's base tier. Base values (<code>spin</code>, <code>pulse</code>, <code>march</code>, <code>hue-cycle</code>, <code>breathe</code>, <code>corner-trace</code>) are owned by vanilla-breeze's CSS — border-wc ignores them. Extreme values — the seventeen effects in the catalog above — are handled here.</p>
       <p>To opt in to extreme effects without writing a <code>&lt;border-wc&gt;</code> wrapper, import the binder once:</p>
       <code-block theme="dark" language="javascript">import '@profpowell/border-wc/attr';</code-block>
       <p>Then annotate any element:</p>
