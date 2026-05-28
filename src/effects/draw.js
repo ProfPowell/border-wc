@@ -21,7 +21,6 @@ export function createDraw(host, params) {
   svg.appendChild(path);
   host.appendChild(svg);
 
-  let raf = 0;
   let currentOnEnd = null;
   const render = (animateIn) => {
     if (currentOnEnd) {
@@ -45,10 +44,14 @@ export function createDraw(host, params) {
       return;
     }
     path.style.strokeDashoffset = String(len);
-    raf = requestAnimationFrame(() => {
-      path.style.transition = `stroke-dashoffset ${params.speed}ms linear`;
-      path.style.strokeDashoffset = '0';
-    });
+    // Force the browser to commit dashoffset=len with transition=none BEFORE
+    // we change it. Without this reflow, the browser can batch the two style
+    // mutations and never paint the "from" value — the transition then never
+    // starts. (Using rAF here is unreliable: rAF callbacks can run in the
+    // same paint pass as the preceding inline-style sets, collapsing them.)
+    void path.getBoundingClientRect();
+    path.style.transition = `stroke-dashoffset ${params.speed}ms linear`;
+    path.style.strokeDashoffset = '0';
     const onEnd = (e) => {
       if (e.propertyName !== 'stroke-dashoffset') return;
       host.dispatchEvent(new CustomEvent('border-wc:draw-complete', { detail: {} }));
@@ -59,10 +62,17 @@ export function createDraw(host, params) {
     path.addEventListener('transitionend', onEnd);
   };
   render(true);
-  const ro = new ResizeObserver(() => render(false));
+  // ResizeObserver fires once on observe() with the element's initial size.
+  // We must SKIP that first fire — otherwise it calls render(false) before the
+  // rAF in render(true) gets to start the transition, killing the animation.
+  // Only react to subsequent (actual) resizes.
+  let observedOnce = false;
+  const ro = new ResizeObserver(() => {
+    if (!observedOnce) { observedOnce = true; return; }
+    render(false);
+  });
   ro.observe(host);
   return () => {
-    cancelAnimationFrame(raf);
     if (currentOnEnd) path.removeEventListener('transitionend', currentOnEnd);
     ro.disconnect();
     svg.remove();
