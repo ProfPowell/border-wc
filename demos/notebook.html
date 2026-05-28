@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notebook — border-wc demos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #fbf6e9;
+      --ink: #1b1a17;
+      --rule: #d3cfc3;
+      --accent: #2563eb;
+      --warn: #d97706;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; min-height: 100vh; background: var(--paper); color: var(--ink); font-family: Inter, system-ui, sans-serif; }
+    body {
+      background-image:
+        linear-gradient(transparent 31px, var(--rule) 32px),
+        radial-gradient(circle at 1.5rem 50%, #c44 8px, transparent 9px);
+      background-size: 100% 32px, 100% 100%;
+      background-attachment: fixed;
+      padding: 32px clamp(20px, 5vw, 64px);
+    }
+    .topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom: 32px; font-family: ui-monospace, monospace; font-size: 12px; opacity: 0.75; }
+    .topbar a { color: var(--accent); text-decoration: none; }
+    h1 { font-family: Caveat, cursive; font-size: clamp(40px, 7vw, 72px); margin: 0 0 8px; letter-spacing: -0.02em; }
+    .lede { font-family: Caveat, cursive; font-size: clamp(22px, 3vw, 28px); margin: 0 0 32px; opacity: 0.7; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+    .quote {
+      padding: 20px 24px;
+      background: var(--paper);
+      font-family: Caveat, cursive;
+      font-size: 22px;
+      line-height: 1.4;
+      border-radius: 12px;
+      margin: 0;
+    }
+    .quote cite { display: block; margin-top: 14px; font-size: 14px; font-family: Inter, sans-serif; font-style: normal; opacity: 0.6; }
+    .quote.q1 { transform: rotate(-1.2deg); }
+    .quote.q2 { transform: rotate(0.8deg); }
+    .quote.q3 { transform: rotate(-0.4deg); }
+    .quote.q4 { transform: rotate(1.4deg); }
+    border-wc { display: block; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <strong>NOTEBOOK</strong>
+    <a href="./" target="_top">&larr; Demos</a>
+  </div>
+
+  <h1>field notes &amp; misc.</h1>
+  <p class="lede">squiggle borders · handwritten cards</p>
+
+  <div class="grid">
+    <border-wc effect="squiggle" color="#1b1a17" thickness="2" radius="12">
+      <blockquote class="quote q1">
+        The shape around the thing is the thing.
+        <cite>— somebody on the internet</cite>
+      </blockquote>
+    </border-wc>
+
+    <border-wc effect="squiggle" color="#d97706" thickness="2.5" radius="12" speed="1400">
+      <blockquote class="quote q2">
+        Make it look like it was drawn by a person who was, generally speaking, having a nice day.
+        <cite>— design crit, paraphrased</cite>
+      </blockquote>
+    </border-wc>
+
+    <border-wc effect="squiggle" color="#2563eb" thickness="2" radius="12">
+      <blockquote class="quote q3">
+        Borders are the most obvious tell.
+        <cite>— me, earlier this week</cite>
+      </blockquote>
+    </border-wc>
+
+    <border-wc effect="squiggle" color="#c44" thickness="3" radius="12" speed="900">
+      <blockquote class="quote q4">
+        TODO: buy more pens.
+        <cite>— the eternal sticky note</cite>
+      </blockquote>
+    </border-wc>
+  </div>
+
+  <script type="module" src="../src/border-wc.js"></script>
+</body>
+</html>

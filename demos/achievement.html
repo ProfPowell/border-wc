@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Achievement — border-wc demos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #05060e;
+      --fg: #f3f5ff;
+      --gold: #ffd23a;
+      --pink: #ff5fa2;
+      --teal: #25d0a6;
+      --muted: #7884a8;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; min-height: 100vh; background: radial-gradient(ellipse at top, #14163a 0%, var(--bg) 60%); color: var(--fg); font-family: Inter, system-ui, sans-serif; }
+    body { padding: 40px clamp(20px, 5vw, 64px); }
+    .topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom: 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); }
+    .topbar a { color: var(--teal); text-decoration: none; }
+    .lede {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold); margin: 0 0 12px;
+    }
+    h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 900; letter-spacing: -0.03em; margin: 0 0 48px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .badge {
+      padding: 24px; border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+      background: linear-gradient(135deg, var(--gold), var(--pink));
+      color: var(--bg);
+      font-weight: 900;
+    }
+    .badge[data-tone="b"] .icon { background: linear-gradient(135deg, var(--teal), #6cb6ff); }
+    .badge[data-tone="c"] .icon { background: linear-gradient(135deg, var(--pink), #b76cff); }
+    .name { font-weight: 700; font-size: 17px; }
+    .desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .xp { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: 0.08em; }
+    border-wc { display: block; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <strong>ACHIEVEMENT</strong>
+    <a href="./" target="_top">&larr; Demos</a>
+  </div>
+
+  <p class="lede">★ Unlocked</p>
+  <h1>Three new achievements.</h1>
+
+  <div class="grid">
+    <border-wc effect="sparks" color="#ffd23a" thickness="2" radius="18" animate>
+      <article class="badge" data-tone="a">
+        <div class="icon">★</div>
+        <div class="name">First Light</div>
+        <div class="desc">Shipped your first border-wc effect.</div>
+        <div class="xp">+250 XP</div>
+      </article>
+    </border-wc>
+
+    <border-wc effect="sparks" color="#25d0a6" thickness="2" radius="18" animate>
+      <article class="badge" data-tone="b">
+        <div class="icon">♥</div>
+        <div class="name">Mark-up Artist</div>
+        <div class="desc">Annotated 10 different elements with a single binder.</div>
+        <div class="xp">+500 XP</div>
+      </article>
+    </border-wc>
+
+    <border-wc effect="sparks" color="#ff5fa2" thickness="2" radius="18" animate>
+      <article class="badge" data-tone="c">
+        <div class="icon">♣</div>
+        <div class="name">Decorated Layer</div>
+        <div class="desc">Used vanilla-breeze base + a border-wc extreme on one element.</div>
+        <div class="xp">+1000 XP</div>
+      </article>
+    </border-wc>
+  </div>
+
+  <script type="module" src="../src/border-wc.js"></script>
+</body>
+</html>

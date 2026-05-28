@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sketchbook — border-wc demos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4ecd8;
+      --ink: #1a1814;
+      --stroke: #1a1814;
+      --muted: #6b5a3e;
+      --accent: #b3261e;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; min-height: 100vh; background: var(--bg); color: var(--ink); font-family: Inter, system-ui, sans-serif; }
+    body { padding: 40px clamp(20px, 5vw, 64px); }
+    .topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom: 40px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; }
+    .topbar a { color: var(--accent); text-decoration: none; }
+    h1 { font-size: clamp(40px, 7vw, 96px); font-weight: 900; letter-spacing: -0.04em; line-height: 0.95; margin: 0 0 6px; }
+    .lede { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6; margin: 0 0 48px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .project {
+      padding: 20px;
+      background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+      border-radius: 16px;
+      display: flex; flex-direction: column; gap: 14px;
+      transition: transform 0.25s ease;
+    }
+    .project:hover { transform: translateY(-3px); }
+    .thumb {
+      aspect-ratio: 4 / 3;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), color-mix(in oklab, var(--accent) 60%, var(--ink)));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--bg);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+    }
+    .project[data-tone="b"] .thumb { background: linear-gradient(135deg, #1a3c6c, #6ab04c); }
+    .project[data-tone="c"] .thumb { background: linear-gradient(135deg, #d97706, #fde4cc); color: #1a1814; }
+    .project[data-tone="d"] .thumb { background: linear-gradient(135deg, #2a1d3f, #ff5e8e); color: #fff; }
+    .title { font-weight: 700; font-size: 17px; }
+    .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.55; letter-spacing: 0.06em; text-transform: uppercase; }
+    border-wc { display: block; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <strong>SKETCHBOOK</strong>
+    <a href="./" target="_top">&larr; Demos</a>
+  </div>
+
+  <h1>recent work.</h1>
+  <p class="lede">draw effect · stroke reveals on hover</p>
+
+  <div class="grid">
+    <border-wc effect="draw" color="#1a1814" thickness="2" radius="16" speed="1400" animate>
+      <article class="project" data-tone="a">
+        <div class="thumb">01 / Atlas</div>
+        <div class="title">Atlas brand system</div>
+        <div class="meta">2026 · identity, web, type</div>
+      </article>
+    </border-wc>
+    <border-wc effect="draw" color="#1a1814" thickness="2" radius="16" speed="1400" animate>
+      <article class="project" data-tone="b">
+        <div class="thumb">02 / Greenhouse</div>
+        <div class="title">Greenhouse mobile app</div>
+        <div class="meta">2026 · product, motion</div>
+      </article>
+    </border-wc>
+    <border-wc effect="draw" color="#1a1814" thickness="2" radius="16" speed="1400" animate>
+      <article class="project" data-tone="c">
+        <div class="thumb">03 / Drift</div>
+        <div class="title">Drift studio site</div>
+        <div class="meta">2025 · editorial, art-direction</div>
+      </article>
+    </border-wc>
+    <border-wc effect="draw" color="#1a1814" thickness="2" radius="16" speed="1400" animate>
+      <article class="project" data-tone="d">
+        <div class="thumb">04 / Mauve</div>
+        <div class="title">Mauve type specimen</div>
+        <div class="meta">2025 · type, print</div>
+      </article>
+    </border-wc>
+  </div>
+
+  <script type="module" src="../src/border-wc.js"></script>
+  <script>
+    // Re-trigger the draw animation on hover (the component fires it on load
+    // when `animate` is set; toggling the attribute replays).
+    document.querySelectorAll('border-wc').forEach((el) => {
+      el.addEventListener('mouseenter', () => {
+        el.removeAttribute('animate');
+        requestAnimationFrame(() => el.setAttribute('animate', ''));
+      });
+    });
+  </script>
+</body>
+</html>
