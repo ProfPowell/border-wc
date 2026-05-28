@@ -183,7 +183,18 @@ footer a { color: var(--color-primary); }
   text-transform: uppercase; letter-spacing: 0.08em;
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   opacity: 0.7;
+  display: flex; align-items: center; justify-content: space-between;
 }
+.effect-card .replay {
+  font: inherit; font-size: 11px; letter-spacing: 0.08em;
+  padding: 4px 10px; border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: transparent; color: inherit; opacity: 1;
+  cursor: pointer;
+  text-transform: none;
+}
+.effect-card .replay:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.effect-card .replay:active { transform: translateY(1px); }
 .effect-card .sample {
   min-height: 140px;
   padding: 20px;
