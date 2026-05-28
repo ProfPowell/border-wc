@@ -6,6 +6,20 @@ export const EFFECTS = {
   draw: () => import('./effects/draw.js').then((m) => m.createDraw),
   squiggle: () => import('./effects/squiggle.js').then((m) => m.createSquiggle),
   sparks: () => import('./effects/sparks.js').then((m) => m.createSparks),
+  lightning: () => import('./effects/lightning.js').then((m) => m.createLightning),
+  flames: () => import('./effects/flames.js').then((m) => m.createFlames),
+  glitch: () => import('./effects/glitch.js').then((m) => m.createGlitch),
+  grass: () => import('./effects/grass.js').then((m) => m.createGrass),
+  vines: () => import('./effects/vines.js').then((m) => m.createVines),
+  fireflies: () => import('./effects/fireflies.js').then((m) => m.createFireflies),
+  ascii: () => import('./effects/ascii.js').then((m) => m.createAscii),
+  stitching: () => import('./effects/stitching.js').then((m) => m.createStitching),
+  typewriter: () => import('./effects/typewriter.js').then((m) => m.createTypewriter),
+  'barbed-wire': () => import('./effects/barbed-wire.js').then((m) => m.createBarbedWire),
+  rope: () => import('./effects/rope.js').then((m) => m.createRope),
+  scallop: () => import('./effects/scallop.js').then((m) => m.createScallop),
+  psychedelic: () => import('./effects/psychedelic.js').then((m) => m.createPsychedelic),
+  plasma: () => import('./effects/plasma.js').then((m) => m.createPlasma),
 };
 
 // Effect names the JS tier owns. The data-border-effect binder uses this to
