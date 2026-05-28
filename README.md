@@ -3,7 +3,7 @@
 [![CI](https://github.com/ProfPowell/border-wc/actions/workflows/ci.yml/badge.svg)](https://github.com/ProfPowell/border-wc/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
-**[Live demo →](https://profpowell.github.io/border-wc/)**
+**[Live site →](https://profpowell.github.io/border-wc/)** — try the [playground](https://profpowell.github.io/border-wc/docs/), read the [API](https://profpowell.github.io/border-wc/docs/api.html), or browse [themed demos](https://profpowell.github.io/border-wc/demos/).
 
 A light-DOM web component for high-touch border effects — squiggle, draw-on,
 sparks — the kind of decorative borders that pure CSS can't pull off. It pairs

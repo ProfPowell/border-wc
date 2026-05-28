@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" data-mode="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>border-wc — gallery</title>
+  <meta name="description" content="Try border-wc's three extreme border effects live: squiggle, draw, sparks. Live knobs, copyable snippet.">
+  <script>
+    (() => {
+      const vb = new URL('../vb', document.baseURI).href.replace(/\/$/, '');
+      window.__VB_THEME_BASE = vb;
+      document.documentElement.dataset.iconPath = vb + '/icons';
+    })();
+  </script>
+  <link rel="stylesheet" href="./site.css">
+</head>
+<body>
+  <header class="site" data-sticky data-layout="cluster" data-layout-justify="between" data-layout-gap="m">
+    <a href="./index.html" class="brand"><strong>&lt;border-wc&gt;</strong></a>
+    <nav class="horizontal pills" aria-label="Site">
+      <ul>
+        <li><a href="./index.html" aria-current="page">Gallery</a></li>
+        <li><a href="./api.html">Docs</a></li>
+        <li><a href="../demos/">Demos</a></li>
+        <li><a href="https://github.com/ProfPowell/border-wc" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </nav>
+    <theme-picker compact>
+      <button type="button" data-trigger class="ghost">
+        <icon-wc name="palette" size="sm"></icon-wc>
+        Theme
+      </button>
+    </theme-picker>
+  </header>
+
+  <main class="content">
+    <header class="page-head">
+      <h1>border-wc</h1>
+      <p class="muted">Extreme border effects the platform under-serves. Three effects today — tweak the knobs and copy the snippet.</p>
+    </header>
+
+    <section class="playground">
+
+      <article class="effect-card" data-effect="squiggle">
+        <h3>squiggle</h3>
+        <border-wc effect="squiggle" animate>
+          <div class="sample">Hand-drawn vibe</div>
+        </border-wc>
+        <div class="knobs">
+          <label for="sq-color">color</label>     <input id="sq-color" type="color" value="#ec4899">
+          <label for="sq-thick">thickness</label> <input id="sq-thick" type="range" min="1" max="6" step="0.5" value="2">
+          <label for="sq-speed">speed</label>     <input id="sq-speed" type="range" min="200" max="3000" step="100" value="1000">
+          <label for="sq-radius">radius</label>   <input id="sq-radius" type="range" min="0" max="40" step="2" value="12">
+        </div>
+        <code-block language="html" theme="dark"></code-block>
+      </article>
+
+      <article class="effect-card" data-effect="draw">
+        <h3>draw</h3>
+        <border-wc effect="draw" animate>
+          <div class="sample">Stroke-on reveal</div>
+        </border-wc>
+        <div class="knobs">
+          <label for="dr-color">color</label>     <input id="dr-color" type="color" value="#3b82f6">
+          <label for="dr-thick">thickness</label> <input id="dr-thick" type="range" min="1" max="6" step="0.5" value="2">
+          <label for="dr-speed">speed</label>     <input id="dr-speed" type="range" min="200" max="3000" step="100" value="1200">
+          <label for="dr-radius">radius</label>   <input id="dr-radius" type="range" min="0" max="40" step="2" value="12">
+        </div>
+        <code-block language="html" theme="dark"></code-block>
+      </article>
+
+      <article class="effect-card" data-effect="sparks">
+        <h3>sparks</h3>
+        <border-wc effect="sparks" animate>
+          <div class="sample">Live indicator</div>
+        </border-wc>
+        <div class="knobs">
+          <label for="sp-color">color</label>     <input id="sp-color" type="color" value="#10b981">
+          <label for="sp-thick">thickness</label> <input id="sp-thick" type="range" min="1" max="6" step="0.5" value="2">
+          <label for="sp-speed">speed</label>     <input id="sp-speed" type="range" min="200" max="3000" step="100" value="1000">
+          <label for="sp-radius">radius</label>   <input id="sp-radius" type="range" min="0" max="40" step="2" value="12">
+        </div>
+        <code-block language="html" theme="dark"></code-block>
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>MIT &middot; <a href="https://github.com/ProfPowell/border-wc">ProfPowell/border-wc</a></p>
+  </footer>
+  <script type="module" src="./docs-entry.js"></script>
+  <script type="module" src="./playground.js"></script>
+</body>
+</html>

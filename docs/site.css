@@ -1,0 +1,213 @@
+/* Layout-only styles for the border-wc docs site. Design tokens come from
+   vanilla-breeze (imported in docs-entry.js / demos-hub.js); this file never
+   redefines them. References use vanilla-breeze token names (--color-text,
+   --color-surface, …) with fallbacks for robustness. Ported and stripped from
+   bg-wc's site.css. */
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--color-background);
+  color: var(--color-text, var(--color-foreground, #1a1a1a));
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  min-height: 100vh;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code, pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+section[id] { scroll-margin-top: 80px; }
+
+/* Header: layout comes from data-layout="cluster"; vanilla-breeze styles the
+   nav (.horizontal.pills), buttons, and selects. */
+header.site {
+  position: sticky; top: 0; z-index: 50;
+  padding: 12px clamp(16px, 4vw, 24px);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+.brand {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 18px; text-decoration: none; color: inherit;
+}
+
+/* Content sections (used by docs/index.html, docs/api.html, demos/index.html). */
+main.content {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 56px clamp(20px, 4vw, 32px) 96px;
+  display: flex; flex-direction: column;
+  gap: 56px;
+}
+main.content h1 {
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin: 0 0 8px;
+}
+.page-head .muted { margin: 0; max-width: 640px; }
+main.content h2 {
+  font-size: clamp(24px, 2.6vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 18px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 10px;
+}
+main.content h3 {
+  font-size: 18px;
+  margin: 24px 0 12px;
+  font-weight: 600;
+}
+main.content p { margin: 0 0 14px; }
+p code, li code, td code, dl code {
+  font-size: 0.9em;
+  background: var(--color-surface, #131722);
+  border: 1px solid var(--color-border, #232a3a);
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: var(--color-accent);
+}
+
+.muted { opacity: 0.65; font-size: 14px; }
+
+/* code-block component spacing + a pre-registration fallback so snippets
+   stay legible before @profpowell/code-block defines. */
+code-block { display: block; margin: 0 0 16px; }
+code-block:not(:defined) {
+  white-space: pre;
+  overflow-x: auto;
+  background: var(--color-surface, #131722);
+  border: 1px solid var(--color-border, #232a3a);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #d6dae8;
+  tab-size: 2;
+}
+
+/* Tables (used in API reference) */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+thead { background: var(--color-surface-raised, var(--color-surface, #1b1f2a)); }
+th, td {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+th {
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #6b7280);
+}
+tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: rgba(91,142,255,0.05); }
+
+footer {
+  text-align: center; padding: 32px;
+  opacity: 0.6; font-size: 13px;
+  border-top: 1px solid var(--color-border);
+  margin-top: 48px;
+}
+footer a { color: var(--color-primary); }
+
+/* ============================================================
+   Demos hub grid (browser-window tiles with scroll-passthrough
+   overlay link). The hub-specific JS lives in demos/demos-hub.js.
+   ============================================================ */
+.demos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 28px;
+}
+.bw-card { position: relative; }
+.bw-card browser-window { width: 100%; height: 300px; }
+/* Transparent overlay: the wheel hits this page element so the PAGE scrolls
+   (not the iframe), and a click opens the demo as a browser-window overlay.
+   Each tile is a non-interactive preview; click anywhere to expand. */
+.bw-card .bw-open {
+  position: absolute; inset: 0; z-index: 5;
+  display: block; border-radius: 12px;
+}
+.bw-card .bw-open:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+.bw-card .meta {
+  padding: 12px 4px 0;
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 12px;
+}
+.bw-card .meta .name { font-weight: 600; font-size: 16px; }
+.bw-card .meta .desc {
+  font-size: 13px;
+  opacity: 0.6;
+  font-family: ui-monospace, monospace;
+}
+
+/* ============================================================
+   Gallery playground (docs/index.html): three effect cards with
+   live knobs + copyable code-block snippet.
+   ============================================================ */
+.playground {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+  margin: 0 0 48px;
+}
+.effect-card {
+  background: color-mix(in oklab, var(--color-foreground) 6%, var(--color-background));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-l, 16px);
+  padding: 24px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.effect-card h3 {
+  margin: 0; font-size: 14px;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  opacity: 0.7;
+}
+.effect-card .sample {
+  min-height: 140px;
+  padding: 20px;
+  border-radius: var(--radius-m, 12px);
+  background: var(--color-background);
+  display: flex; align-items: center; justify-content: center;
+  font-family: ui-monospace, monospace;
+  color: var(--color-text, var(--color-foreground));
+  font-size: 15px;
+}
+.effect-card border-wc { display: block; }
+.effect-card .knobs {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 14px;
+  align-items: center;
+  font-size: 13px;
+}
+.effect-card .knobs label {
+  opacity: 0.7;
+  font-family: ui-monospace, monospace;
+}
+.effect-card .knobs input[type="range"],
+.effect-card .knobs input[type="color"] {
+  width: 100%;
+}
+.effect-card code-block { font-size: 12px; margin: 0; }
