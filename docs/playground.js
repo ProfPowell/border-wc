@@ -1,8 +1,11 @@
 // Wires the gallery playground: each .effect-card has knobs (input[data-knob])
 // that update its inner <border-wc> attributes live, and a <code-block> that
 // shows the current HTML snippet. The card's effect name comes from
-// data-effect, the sample label from data-sample-label, and the knob name
-// from data-knob — this scales to all 17 effects without per-card JS.
+// data-border-effect, the sample label from data-sample-label, and the knob
+// name from data-knob — this scales to all 17 effects without per-card JS.
+// NOTE: the article uses data-border-effect (not data-effect) to avoid
+// colliding with vanilla-breeze, which scans data-effect for its own base
+// effects (e.g. typewriter) and would rewrite the article's contents.
 
 // code-block snapshots its textContent at connect time, so after upgrade the
 // only way to update its content is via the public setCode() method. Pre-upgrade,
@@ -13,7 +16,7 @@ function writeSnippet(cb, snippet) {
 }
 
 function setupCard(card) {
-  const effect = card.dataset.effect;
+  const effect = card.dataset.borderEffect;
   const label = card.dataset.sampleLabel || 'Sample';
   const win = card.querySelector('border-wc');
   const sample = card.querySelector('.sample');
