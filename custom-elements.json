@@ -141,6 +141,44 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/data-border-effect.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "bindBorderEffects",
+          "parameters": [
+            {
+              "name": "root",
+              "default": "document"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "stopWatching"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "bindBorderEffects",
+          "declaration": {
+            "name": "bindBorderEffects",
+            "module": "src/data-border-effect.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "stopWatching",
+          "declaration": {
+            "name": "stopWatching",
+            "module": "src/data-border-effect.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/params.js",
       "declarations": [
         {
@@ -207,10 +245,37 @@
       "declarations": [
         {
           "kind": "function",
-          "name": "roundedRectPerimeter",
+          "name": "tracePath",
           "parameters": [
             {
-              "name": "dims"
+              "name": "{ start, segments }"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "traceLength",
+          "parameters": [
+            {
+              "name": "{ segments }"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "traceSampler",
+          "parameters": [
+            {
+              "name": "{ start, segments }"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "roundedRectShape",
+          "parameters": [
+            {
+              "name": "{ width, height, corners, inset = 0 }"
             }
           ]
         },
@@ -225,10 +290,88 @@
         },
         {
           "kind": "function",
+          "name": "roundedRectPerimeter",
+          "parameters": [
+            {
+              "name": "dims"
+            }
+          ]
+        },
+        {
+          "kind": "function",
           "name": "roundedRectSampler",
           "parameters": [
             {
               "name": "dims"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "polygonShape",
+          "parameters": [
+            {
+              "name": "points"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "circleShape",
+          "parameters": [
+            {
+              "name": "{ cx, cy, r }"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "ellipseShape",
+          "parameters": [
+            {
+              "name": "{ cx, cy, rx, ry }"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "insetShape",
+          "parameters": [
+            {
+              "name": "{\n    top = 0,\n    right = 0,\n    bottom = 0,\n    left = 0,\n    corners = [\n      [0, 0],\n      [0, 0],\n      [0, 0],\n      [0, 0],\n    ],\n  }"
+            },
+            {
+              "name": "{ width, height }"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "pathShape",
+          "parameters": [
+            {
+              "name": "d"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "shapeShape",
+          "parameters": [
+            {
+              "name": "commands"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "parseClipPath",
+          "parameters": [
+            {
+              "name": "value"
+            },
+            {
+              "name": "box"
             }
           ]
         },
@@ -262,9 +405,33 @@
       "exports": [
         {
           "kind": "js",
-          "name": "roundedRectPerimeter",
+          "name": "tracePath",
           "declaration": {
-            "name": "roundedRectPerimeter",
+            "name": "tracePath",
+            "module": "src/perimeter.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "traceLength",
+          "declaration": {
+            "name": "traceLength",
+            "module": "src/perimeter.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "traceSampler",
+          "declaration": {
+            "name": "traceSampler",
+            "module": "src/perimeter.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "roundedRectShape",
+          "declaration": {
+            "name": "roundedRectShape",
             "module": "src/perimeter.js"
           }
         },
@@ -278,9 +445,73 @@
         },
         {
           "kind": "js",
+          "name": "roundedRectPerimeter",
+          "declaration": {
+            "name": "roundedRectPerimeter",
+            "module": "src/perimeter.js"
+          }
+        },
+        {
+          "kind": "js",
           "name": "roundedRectSampler",
           "declaration": {
             "name": "roundedRectSampler",
+            "module": "src/perimeter.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "polygonShape",
+          "declaration": {
+            "name": "polygonShape",
+            "module": "src/perimeter.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "circleShape",
+          "declaration": {
+            "name": "circleShape",
+            "module": "src/perimeter.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ellipseShape",
+          "declaration": {
+            "name": "ellipseShape",
+            "module": "src/perimeter.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "insetShape",
+          "declaration": {
+            "name": "insetShape",
+            "module": "src/perimeter.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "pathShape",
+          "declaration": {
+            "name": "pathShape",
+            "module": "src/perimeter.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "shapeShape",
+          "declaration": {
+            "name": "shapeShape",
+            "module": "src/perimeter.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "parseClipPath",
+          "declaration": {
+            "name": "parseClipPath",
             "module": "src/perimeter.js"
           }
         },
@@ -298,6 +529,59 @@
           "declaration": {
             "name": "perimeterSampler",
             "module": "src/perimeter.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/registry.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "EFFECTS",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ draw: () => import('./effects/draw.js').then((m) => m.createDraw), squiggle: () => import('./effects/squiggle.js').then((m) => m.createSquiggle), sparks: () => import('./effects/sparks.js').then((m) => m.createSparks), }"
+        },
+        {
+          "kind": "variable",
+          "name": "EXTREME"
+        },
+        {
+          "kind": "function",
+          "name": "styleHost",
+          "parameters": [
+            {
+              "name": "host"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "EFFECTS",
+          "declaration": {
+            "name": "EFFECTS",
+            "module": "src/registry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "EXTREME",
+          "declaration": {
+            "name": "EXTREME",
+            "module": "src/registry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "styleHost",
+          "declaration": {
+            "name": "styleHost",
+            "module": "src/registry.js"
           }
         }
       ]
