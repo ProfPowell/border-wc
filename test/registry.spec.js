@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-// Final set of 19 effects after the CSS-first refresh.
+// Current effect catalog: 19 from the CSS-first refresh + scoop/zigzag/wave.
 const ALL_EFFECTS = [
   'aurora',
   'barber',
@@ -15,6 +15,9 @@ const ALL_EFFECTS = [
   'barbed-wire',
   'rope',
   'scallop',
+  'scoop',
+  'zigzag',
+  'wave',
   'psychedelic',
   'plasma',
   'sparks',
@@ -23,10 +26,10 @@ const ALL_EFFECTS = [
   'draw',
 ];
 
-// All 19 modules exist; the reduce-motion sweep exercises each.
+// All modules exist; the reduce-motion sweep exercises each.
 const IMPLEMENTED = ALL_EFFECTS;
 
-test('registry exposes all 19 effect names', async ({ page }) => {
+test(`registry exposes all ${ALL_EFFECTS.length} effect names`, async ({ page }) => {
   await page.goto('/test/test-page.html');
   const keys = await page.evaluate(async () => {
     const m = await import('/src/registry.js');
