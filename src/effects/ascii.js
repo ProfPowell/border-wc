@@ -25,7 +25,10 @@ export function createAscii(host, params) {
       const dx = x2 - x;
       const dy = y2 - y;
       const corner =
-        i === 0 || i === Math.floor(N / 4) || i === Math.floor(N / 2) || i === Math.floor((3 * N) / 4);
+        i === 0 ||
+        i === Math.floor(N / 4) ||
+        i === Math.floor(N / 2) ||
+        i === Math.floor((3 * N) / 4);
       const ch = corner ? '+' : Math.abs(dx) > Math.abs(dy) ? '-' : '|';
       const txt = document.createElementNS(SVG_NS, 'text');
       txt.setAttribute('x', String(x));
@@ -38,7 +41,7 @@ export function createAscii(host, params) {
       txt.textContent = ch;
       if (!params.reduce) {
         txt.style.opacity = '0';
-        txt.style.transition = `opacity 80ms linear ${((t * params.speed) | 0)}ms`;
+        txt.style.transition = `opacity 80ms linear ${(t * params.speed) | 0}ms`;
       }
       svg.appendChild(txt);
     }

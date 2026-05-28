@@ -27,15 +27,12 @@ export function createScallop(host, params) {
       const ty = y2 - y;
       const ang = (Math.atan2(ty, tx) * 180) / Math.PI;
       const bump = document.createElementNS(SVG_NS, 'path');
-      bump.setAttribute(
-        'd',
-        `M -${bumpR} 0 A ${bumpR} ${bumpR} 0 0 1 ${bumpR} 0 Z`
-      );
+      bump.setAttribute('d', `M -${bumpR} 0 A ${bumpR} ${bumpR} 0 0 1 ${bumpR} 0 Z`);
       bump.setAttribute('fill', color);
       bump.setAttribute('transform', `translate(${x} ${y}) rotate(${ang + 180})`);
       if (!params.reduce) {
         bump.style.opacity = '0';
-        bump.style.transition = `opacity 80ms ease-out ${((t * params.speed) | 0)}ms`;
+        bump.style.transition = `opacity 80ms ease-out ${(t * params.speed) | 0}ms`;
       }
       g.appendChild(bump);
     }

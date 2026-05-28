@@ -18,8 +18,7 @@ export function createVines(host, params) {
     const radius = resolveRadius(host, params);
     const inset = params.thickness / 2;
     vine.setAttribute('d', roundedRectPath({ width: r.width, height: r.height, radius, inset }));
-    const len =
-      roundedRectPerimeter({ width: r.width, height: r.height, radius, inset }) || 1;
+    const len = roundedRectPerimeter({ width: r.width, height: r.height, radius, inset }) || 1;
     const sampler = roundedRectSampler({
       width: r.width,
       height: r.height,

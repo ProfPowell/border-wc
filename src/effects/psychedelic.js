@@ -14,15 +14,7 @@ export function createPsychedelic(host, params) {
   grad.setAttribute('y1', '0%');
   grad.setAttribute('x2', '100%');
   grad.setAttribute('y2', '100%');
-  const stops = [
-    '#ff2bd6',
-    '#ff7a2b',
-    '#ffe22b',
-    '#2bff7a',
-    '#2bbcff',
-    '#7a2bff',
-    '#ff2bd6',
-  ];
+  const stops = ['#ff2bd6', '#ff7a2b', '#ffe22b', '#2bff7a', '#2bbcff', '#7a2bff', '#ff2bd6'];
   stops.forEach((c, i) => {
     const s = document.createElementNS(SVG_NS, 'stop');
     s.setAttribute('offset', `${(i / (stops.length - 1)) * 100}%`);

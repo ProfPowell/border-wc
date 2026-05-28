@@ -20,12 +20,8 @@ export function createBarbedWire(host, params) {
     const r = host.getBoundingClientRect();
     const radius = resolveRadius(host, params);
     const inset = params.thickness / 2;
-    wire.setAttribute(
-      'd',
-      roundedRectPath({ width: r.width, height: r.height, radius, inset })
-    );
-    const len =
-      roundedRectPerimeter({ width: r.width, height: r.height, radius, inset }) || 1;
+    wire.setAttribute('d', roundedRectPath({ width: r.width, height: r.height, radius, inset }));
+    const len = roundedRectPerimeter({ width: r.width, height: r.height, radius, inset }) || 1;
     const sampler = roundedRectSampler({
       width: r.width,
       height: r.height,
@@ -49,13 +45,10 @@ export function createBarbedWire(host, params) {
       barb.setAttribute('stroke', color);
       barb.setAttribute('stroke-width', String(Math.max(1, params.thickness * 0.5)));
       barb.setAttribute('stroke-linecap', 'round');
-      barb.setAttribute(
-        'transform',
-        `translate(${x} ${y}) rotate(${ang + 45})`
-      );
+      barb.setAttribute('transform', `translate(${x} ${y}) rotate(${ang + 45})`);
       if (!params.reduce) {
         barb.style.opacity = '0';
-        barb.style.transition = `opacity 80ms ease-out ${((t * params.speed) | 0)}ms`;
+        barb.style.transition = `opacity 80ms ease-out ${(t * params.speed) | 0}ms`;
       }
       barbs.appendChild(barb);
     }

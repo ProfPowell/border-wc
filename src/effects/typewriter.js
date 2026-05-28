@@ -37,7 +37,7 @@ export function createTypewriter(host, params) {
       el.textContent = ch;
       if (!params.reduce) {
         el.style.opacity = '0';
-        el.style.transition = `opacity 60ms linear ${((t * params.speed) | 0)}ms`;
+        el.style.transition = `opacity 60ms linear ${(t * params.speed) | 0}ms`;
       }
       svg.appendChild(el);
     }
