@@ -30,22 +30,8 @@ jobs:
       - name: Build library
         run: npm run build
 
-      - name: Assemble demo site
-        run: |
-          mkdir -p _site
-          # The demo imports ../src/border-wc.js, so preserve the demos/ + src/
-          # layout; dist/ ships the built bundle. A root redirect points at it.
-          cp -r demos _site/demos
-          cp -r src _site/src
-          cp -r dist _site/dist
-          cp README.md custom-elements.json _site/
-          cat > _site/index.html <<'HTML'
-          <!doctype html>
-          <html lang="en"><head><meta charset="utf-8">
-          <title>border-wc</title>
-          <meta http-equiv="refresh" content="0; url=./demos/index.html"></head>
-          <body><p><a href="./demos/index.html">border-wc demos &rarr;</a></p></body></html>
-          HTML
+      - name: Build site
+        run: npm run site:build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -55,7 +41,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '_site'
+          path: 'dist-site'
 
   deploy:
     environment:
