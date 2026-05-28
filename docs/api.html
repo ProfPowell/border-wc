@@ -61,7 +61,7 @@
         <table>
           <thead><tr><th>Attribute</th><th>Description</th></tr></thead>
           <tbody>
-            <tr><td><code>effect</code></td><td>One of nineteen effects — see the <a href="#catalog">Effects catalog</a> below.</td></tr>
+            <tr><td><code>effect</code></td><td>One of twenty-two effects — see the <a href="#catalog">Effects catalog</a> below.</td></tr>
             <tr><td><code>color</code></td><td>Stroke / particle color (any CSS color; defaults to <code>currentColor</code>).</td></tr>
             <tr><td><code>thickness</code></td><td>Stroke width in px (default 2).</td></tr>
             <tr><td><code>speed</code></td><td>Animation duration in ms (default 1000).</td></tr>
@@ -108,6 +108,9 @@
             <tr><td><code>barbed-wire</code></td><td>Pattern</td><td>svg</td><td>Wire path + rotated four-point barbs.</td></tr>
             <tr><td><code>rope</code></td><td>Pattern</td><td>svg</td><td>Two offset dashed strands suggesting a twist.</td></tr>
             <tr><td><code>scallop</code></td><td>Pattern</td><td>svg</td><td>Half-circle bumps oriented along the outward normal.</td></tr>
+            <tr><td><code>scoop</code></td><td>Pattern</td><td>svg</td><td>Inverse of scallop: concave bites cut into each edge (postage-stamp from the back). One-shot dashoffset reveal.</td></tr>
+            <tr><td><code>zigzag</code></td><td>Pattern</td><td>svg</td><td>Sawtooth perimeter; optional marching-dashes loop.</td></tr>
+            <tr><td><code>wave</code></td><td>Pattern</td><td>svg</td><td>Smooth sine perimeter via quad beziers; optional marching-dashes loop.</td></tr>
             <tr><td><code>psychedelic</code></td><td>Trippy</td><td>svg</td><td>Rainbow gradient stroke + hue-rotate + marching dashes.</td></tr>
             <tr><td><code>plasma</code></td><td>Trippy</td><td>canvas</td><td>HSL-cycling glow piecewise along the perimeter.</td></tr>
             <tr><td><code>sparks</code></td><td>Marquee</td><td>svg + offset-path</td><td>Comet-tail circles orbiting via <code>offset-path</code>; refactored from canvas in 0.2.</td></tr>
@@ -133,7 +136,7 @@
 
     <section id="data-border-effect">
       <h2>Attribute binder — <code>data-border-effect</code></h2>
-      <p>border-wc shares the <code>data-border-effect</code> attribute with vanilla-breeze's base tier. Base values (<code>spin</code>, <code>pulse</code>, <code>march</code>, <code>hue-cycle</code>, <code>breathe</code>, <code>corner-trace</code>) are owned by vanilla-breeze's CSS — border-wc ignores them. Extreme values — the nineteen effects in the catalog above — are handled here.</p>
+      <p>border-wc shares the <code>data-border-effect</code> attribute with vanilla-breeze's base tier. Base values (<code>spin</code>, <code>pulse</code>, <code>march</code>, <code>hue-cycle</code>, <code>breathe</code>, <code>corner-trace</code>) are owned by vanilla-breeze's CSS — border-wc ignores them. Extreme values — the twenty-two effects in the catalog above — are handled here.</p>
       <p>To opt in to extreme effects without writing a <code>&lt;border-wc&gt;</code> wrapper, import the binder once:</p>
       <code-block theme="dark" language="javascript">import '@profpowell/border-wc/attr';</code-block>
       <p>Then annotate any element:</p>

@@ -20,6 +20,9 @@ export const EFFECTS = {
   'barbed-wire': () => import('./effects/barbed-wire.js').then((m) => m.createBarbedWire),
   rope: () => import('./effects/rope.js').then((m) => m.createRope),
   scallop: () => import('./effects/scallop.js').then((m) => m.createScallop),
+  scoop: () => import('./effects/scoop.js').then((m) => m.createScoop),
+  zigzag: () => import('./effects/zigzag.js').then((m) => m.createZigzag),
+  wave: () => import('./effects/wave.js').then((m) => m.createWave),
   // Trippy
   psychedelic: () => import('./effects/psychedelic.js').then((m) => m.createPsychedelic),
   plasma: () => import('./effects/plasma.js').then((m) => m.createPlasma),
