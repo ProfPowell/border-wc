@@ -18,7 +18,8 @@ function setupCard(card) {
   const win = card.querySelector('border-wc');
   const sample = card.querySelector('.sample');
   const codeBlock = card.querySelector('code-block');
-  const inputs = card.querySelectorAll('.knobs input[data-knob]');
+  // Pick up inputs *and* selects (e.g. mode dropdowns on barber/marquee).
+  const inputs = card.querySelectorAll('.knobs [data-knob]');
   const replay = card.querySelector('[data-replay]');
 
   function read() {
@@ -28,23 +29,31 @@ function setupCard(card) {
   }
 
   function apply() {
-    const { color, thickness, speed, radius } = read();
-    win.setAttribute('color', color);
+    const { color, thickness, speed, radius, mode } = read();
+    // Empty color string = "use the effect's default theme palette".
+    if (color) win.setAttribute('color', color);
+    else win.removeAttribute('color');
     win.setAttribute('thickness', thickness);
     win.setAttribute('speed', speed);
     win.setAttribute('radius', radius);
+    if (mode) win.setAttribute('mode', mode);
     sample.style.borderRadius = radius + 'px';
+    const colorAttr = color ? ` color="${color}"` : '';
+    const modeAttr = mode ? ` mode="${mode}"` : '';
     const snippet =
-      `<border-wc effect="${effect}" color="${color}" thickness="${thickness}"\n` +
-      `           speed="${speed}" radius="${radius}" animate>\n` +
+      `<border-wc effect="${effect}"${colorAttr} thickness="${thickness}"\n` +
+      `           speed="${speed}" radius="${radius}"${modeAttr} animate>\n` +
       `  <div class="sample">${label}</div>\n` +
       `</border-wc>`;
     writeSnippet(codeBlock, snippet);
   }
 
-  // Knob changes apply live; one-shot effects (draw/vines/ascii/typewriter)
-  // expose a Replay button that re-runs the reveal via refresh().
-  for (const i of inputs) i.addEventListener('input', apply);
+  // Knob changes apply live; one-shot effects (draw/ascii/typewriter) expose
+  // a Replay button that re-runs the reveal via refresh().
+  for (const i of inputs) {
+    i.addEventListener('input', apply);
+    i.addEventListener('change', apply);
+  }
   if (replay) {
     replay.addEventListener('click', () => {
       if (typeof win.refresh === 'function') win.refresh();

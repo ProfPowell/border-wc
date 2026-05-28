@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>border-wc — gallery</title>
-  <meta name="description" content="Try border-wc's 17 extreme border effects live: lightning, flames, glitch, grass, vines, fireflies, ascii, stitching, typewriter, barbed-wire, rope, scallop, psychedelic, plasma, squiggle, draw, sparks. Live knobs, copyable snippet.">
+  <meta name="description" content="border-wc — 19 CSS-first border effects: aurora (conic-gradient halo), barber stripes, chromatic aberration, neon glow, marquee bulbs, and more. Live knobs, copyable snippets.">
   <script>
     (() => {
       const vb = new URL('../vb', document.baseURI).href.replace(/\/$/, '');
@@ -36,24 +36,86 @@
   <main class="content">
     <header class="page-head">
       <h1>border-wc</h1>
-      <p class="muted">Extreme border effects the platform under-serves — seventeen of them. Tweak the knobs and copy the snippet.</p>
+      <p class="muted">Extreme border effects the platform under-serves — nineteen of them, CSS-first. Tweak the knobs and copy the snippet.</p>
       <nav class="gallery-toc" aria-label="Effects sections">
+        <a href="#modern">Modern CSS</a>
         <a href="#energy">Energy</a>
-        <a href="#organic">Organic</a>
         <a href="#retro">Retro &amp; Craft</a>
         <a href="#pattern">Pattern</a>
         <a href="#trippy">Trippy</a>
+        <a href="#marquee">Marquee</a>
         <a href="#originals">Originals</a>
       </nav>
     </header>
+
+    <section id="modern">
+      <h2>Modern CSS</h2>
+      <div class="playground">
+
+        <article class="effect-card" data-effect="aurora" data-sample-label="Aurora">
+          <h3>aurora</h3>
+          <border-wc effect="aurora" animate><div class="sample">Aurora</div></border-wc>
+          <div class="knobs">
+            <label for="kn-aurora-color">color</label>     <input id="kn-aurora-color" data-knob="color" type="text" value="" placeholder="theme oklch palette">
+            <label for="kn-aurora-thick">thickness</label> <input id="kn-aurora-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="3">
+            <label for="kn-aurora-speed">speed</label>     <input id="kn-aurora-speed" data-knob="speed" type="range" min="200" max="3000" step="100" value="1000">
+            <label for="kn-aurora-radius">radius</label>   <input id="kn-aurora-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="16">
+          </div>
+          <code-block language="html" theme="dark"></code-block>
+        </article>
+
+        <article class="effect-card" data-effect="barber" data-sample-label="Caution">
+          <h3>barber</h3>
+          <border-wc effect="barber" animate mode="warning"><div class="sample">Caution</div></border-wc>
+          <div class="knobs">
+            <label for="kn-barber-mode">mode</label>
+            <select id="kn-barber-mode" data-knob="mode">
+              <option value="warning">warning</option>
+              <option value="candy">candy</option>
+              <option value="racing">racing</option>
+            </select>
+            <label for="kn-barber-color">color</label>     <input id="kn-barber-color" data-knob="color" type="text" value="" placeholder="(preset)">
+            <label for="kn-barber-thick">thickness</label> <input id="kn-barber-thick" data-knob="thickness" type="range" min="1" max="8" step="0.5" value="3">
+            <label for="kn-barber-speed">speed</label>     <input id="kn-barber-speed" data-knob="speed" type="range" min="200" max="3000" step="100" value="1200">
+            <label for="kn-barber-radius">radius</label>   <input id="kn-barber-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="12">
+          </div>
+          <code-block language="html" theme="dark"></code-block>
+        </article>
+
+        <article class="effect-card" data-effect="chroma" data-sample-label="RGB split">
+          <h3>chroma</h3>
+          <border-wc effect="chroma" animate><div class="sample">RGB split</div></border-wc>
+          <div class="knobs">
+            <label for="kn-chroma-color">color</label>     <input id="kn-chroma-color" data-knob="color" type="text" value="" placeholder="r,g,b colors">
+            <label for="kn-chroma-thick">thickness</label> <input id="kn-chroma-thick" data-knob="thickness" type="range" min="1" max="4" step="0.5" value="1.5">
+            <label for="kn-chroma-speed">speed</label>     <input id="kn-chroma-speed" data-knob="speed" type="range" min="200" max="3000" step="100" value="1200">
+            <label for="kn-chroma-radius">radius</label>   <input id="kn-chroma-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="8">
+          </div>
+          <code-block language="html" theme="dark"></code-block>
+        </article>
+
+        <article class="effect-card" data-effect="wings" data-sample-label="Poster">
+          <h3>wings</h3>
+          <border-wc effect="wings" animate><div class="sample">Poster</div></border-wc>
+          <div class="knobs">
+            <label for="kn-wings-color">color</label>     <input id="kn-wings-color" data-knob="color" type="text" value="" placeholder="two colors, comma">
+            <label for="kn-wings-thick">thickness</label> <input id="kn-wings-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="3">
+            <label for="kn-wings-speed">speed</label>     <input id="kn-wings-speed" data-knob="speed" type="range" min="200" max="3000" step="100" value="1400">
+            <label for="kn-wings-radius">radius</label>   <input id="kn-wings-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="8">
+          </div>
+          <code-block language="html" theme="dark"></code-block>
+        </article>
+
+      </div>
+    </section>
 
     <section id="energy">
       <h2>Energy</h2>
       <div class="playground">
 
-        <article class="effect-card" data-effect="lightning" data-sample-label="Storm brewing">
+        <article class="effect-card" data-effect="lightning" data-sample-label="Storm">
           <h3>lightning</h3>
-          <border-wc effect="lightning" animate><div class="sample">Storm brewing</div></border-wc>
+          <border-wc effect="lightning" animate><div class="sample">Storm</div></border-wc>
           <div class="knobs">
             <label for="kn-lightning-color">color</label>     <input id="kn-lightning-color" data-knob="color" type="color" value="#bcd6ff">
             <label for="kn-lightning-thick">thickness</label> <input id="kn-lightning-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="2.5">
@@ -63,14 +125,14 @@
           <code-block language="html" theme="dark"></code-block>
         </article>
 
-        <article class="effect-card" data-effect="flames" data-sample-label="Hot take">
-          <h3>flames</h3>
-          <border-wc effect="flames" animate><div class="sample">Hot take</div></border-wc>
+        <article class="effect-card" data-effect="neon" data-sample-label="OPEN">
+          <h3>neon</h3>
+          <border-wc effect="neon" animate><div class="sample">OPEN</div></border-wc>
           <div class="knobs">
-            <label for="kn-flames-color">color</label>     <input id="kn-flames-color" data-knob="color" type="color" value="#ff7a2b">
-            <label for="kn-flames-thick">thickness</label> <input id="kn-flames-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="2">
-            <label for="kn-flames-speed">speed</label>     <input id="kn-flames-speed" data-knob="speed" type="range" min="200" max="3000" step="100" value="1000">
-            <label for="kn-flames-radius">radius</label>   <input id="kn-flames-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="12">
+            <label for="kn-neon-color">color</label>     <input id="kn-neon-color" data-knob="color" type="color" value="#ff2bd6">
+            <label for="kn-neon-thick">thickness</label> <input id="kn-neon-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="3">
+            <label for="kn-neon-speed">speed</label>     <input id="kn-neon-speed" data-knob="speed" type="range" min="200" max="3000" step="100" value="1400">
+            <label for="kn-neon-radius">radius</label>   <input id="kn-neon-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="14">
           </div>
           <code-block language="html" theme="dark"></code-block>
         </article>
@@ -83,49 +145,6 @@
             <label for="kn-glitch-thick">thickness</label> <input id="kn-glitch-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="2">
             <label for="kn-glitch-speed">speed</label>     <input id="kn-glitch-speed" data-knob="speed" type="range" min="200" max="3000" step="100" value="600">
             <label for="kn-glitch-radius">radius</label>   <input id="kn-glitch-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="8">
-          </div>
-          <code-block language="html" theme="dark"></code-block>
-        </article>
-
-      </div>
-    </section>
-
-    <section id="organic">
-      <h2>Organic</h2>
-      <div class="playground">
-
-        <article class="effect-card" data-effect="grass" data-sample-label="Spring lawn">
-          <h3>grass</h3>
-          <border-wc effect="grass" animate><div class="sample">Spring lawn</div></border-wc>
-          <div class="knobs">
-            <label for="kn-grass-color">color</label>     <input id="kn-grass-color" data-knob="color" type="color" value="#6fd06b">
-            <label for="kn-grass-thick">thickness</label> <input id="kn-grass-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="2">
-            <label for="kn-grass-speed">speed</label>     <input id="kn-grass-speed" data-knob="speed" type="range" min="200" max="3000" step="100" value="1400">
-            <label for="kn-grass-radius">radius</label>   <input id="kn-grass-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="14">
-          </div>
-          <code-block language="html" theme="dark"></code-block>
-        </article>
-
-        <article class="effect-card" data-effect="vines" data-sample-label="Cottagecore">
-          <h3>vines <button type="button" class="replay" data-replay aria-label="Replay vines animation">&#9654; Replay</button></h3>
-          <border-wc effect="vines" animate><div class="sample">Cottagecore</div></border-wc>
-          <div class="knobs">
-            <label for="kn-vines-color">color</label>     <input id="kn-vines-color" data-knob="color" type="color" value="#2f6b2a">
-            <label for="kn-vines-thick">thickness</label> <input id="kn-vines-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="2.5">
-            <label for="kn-vines-speed">speed</label>     <input id="kn-vines-speed" data-knob="speed" type="range" min="200" max="3000" step="100" value="1600">
-            <label for="kn-vines-radius">radius</label>   <input id="kn-vines-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="14">
-          </div>
-          <code-block language="html" theme="dark"></code-block>
-        </article>
-
-        <article class="effect-card" data-effect="fireflies" data-sample-label="Evening glow">
-          <h3>fireflies</h3>
-          <border-wc effect="fireflies" animate><div class="sample">Evening glow</div></border-wc>
-          <div class="knobs">
-            <label for="kn-fireflies-color">color</label>     <input id="kn-fireflies-color" data-knob="color" type="color" value="#ffe27a">
-            <label for="kn-fireflies-thick">thickness</label> <input id="kn-fireflies-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="2">
-            <label for="kn-fireflies-speed">speed</label>     <input id="kn-fireflies-speed" data-knob="speed" type="range" min="200" max="3000" step="100" value="1200">
-            <label for="kn-fireflies-radius">radius</label>   <input id="kn-fireflies-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="12">
           </div>
           <code-block language="html" theme="dark"></code-block>
         </article>
@@ -204,9 +223,9 @@
           <code-block language="html" theme="dark"></code-block>
         </article>
 
-        <article class="effect-card" data-effect="scallop" data-sample-label="Vintage card">
+        <article class="effect-card" data-effect="scallop" data-sample-label="Vintage">
           <h3>scallop</h3>
-          <border-wc effect="scallop" animate><div class="sample">Vintage card</div></border-wc>
+          <border-wc effect="scallop" animate><div class="sample">Vintage</div></border-wc>
           <div class="knobs">
             <label for="kn-scallop-color">color</label>     <input id="kn-scallop-color" data-knob="color" type="color" value="#f7a8c8">
             <label for="kn-scallop-thick">thickness</label> <input id="kn-scallop-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="2.5">
@@ -250,13 +269,50 @@
       </div>
     </section>
 
+    <section id="marquee">
+      <h2>Marquee</h2>
+      <div class="playground">
+
+        <article class="effect-card" data-effect="sparks" data-sample-label="Live">
+          <h3>sparks</h3>
+          <border-wc effect="sparks" animate><div class="sample">Live</div></border-wc>
+          <div class="knobs">
+            <label for="kn-sparks-color">color</label>     <input id="kn-sparks-color" data-knob="color" type="color" value="#fff7c4">
+            <label for="kn-sparks-thick">thickness</label> <input id="kn-sparks-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="3">
+            <label for="kn-sparks-speed">speed</label>     <input id="kn-sparks-speed" data-knob="speed" type="range" min="200" max="3000" step="100" value="900">
+            <label for="kn-sparks-radius">radius</label>   <input id="kn-sparks-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="14">
+          </div>
+          <code-block language="html" theme="dark"></code-block>
+        </article>
+
+        <article class="effect-card" data-effect="marquee" data-sample-label="Now Showing">
+          <h3>marquee</h3>
+          <border-wc effect="marquee" animate mode="chase"><div class="sample">Now Showing</div></border-wc>
+          <div class="knobs">
+            <label for="kn-marquee-mode">mode</label>
+            <select id="kn-marquee-mode" data-knob="mode">
+              <option value="chase">chase</option>
+              <option value="sparkle">sparkle</option>
+              <option value="random">random</option>
+            </select>
+            <label for="kn-marquee-color">color</label>     <input id="kn-marquee-color" data-knob="color" type="color" value="#fff7d6">
+            <label for="kn-marquee-thick">thickness</label> <input id="kn-marquee-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="3">
+            <label for="kn-marquee-speed">speed</label>     <input id="kn-marquee-speed" data-knob="speed" type="range" min="200" max="3000" step="100" value="1400">
+            <label for="kn-marquee-radius">radius</label>   <input id="kn-marquee-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="14">
+          </div>
+          <code-block language="html" theme="dark"></code-block>
+        </article>
+
+      </div>
+    </section>
+
     <section id="originals">
       <h2>Originals</h2>
       <div class="playground">
 
-        <article class="effect-card" data-effect="squiggle" data-sample-label="Hand-drawn vibe">
+        <article class="effect-card" data-effect="squiggle" data-sample-label="Hand-drawn">
           <h3>squiggle</h3>
-          <border-wc effect="squiggle" animate><div class="sample">Hand-drawn vibe</div></border-wc>
+          <border-wc effect="squiggle" animate><div class="sample">Hand-drawn</div></border-wc>
           <div class="knobs">
             <label for="kn-squiggle-color">color</label>     <input id="kn-squiggle-color" data-knob="color" type="color" value="#ec4899">
             <label for="kn-squiggle-thick">thickness</label> <input id="kn-squiggle-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="2">
@@ -266,26 +322,14 @@
           <code-block language="html" theme="dark"></code-block>
         </article>
 
-        <article class="effect-card" data-effect="draw" data-sample-label="Stroke-on reveal">
+        <article class="effect-card" data-effect="draw" data-sample-label="Stroke-on">
           <h3>draw <button type="button" class="replay" data-replay aria-label="Replay draw animation">&#9654; Replay</button></h3>
-          <border-wc effect="draw" animate><div class="sample">Stroke-on reveal</div></border-wc>
+          <border-wc effect="draw" animate><div class="sample">Stroke-on</div></border-wc>
           <div class="knobs">
             <label for="kn-draw-color">color</label>     <input id="kn-draw-color" data-knob="color" type="color" value="#3b82f6">
             <label for="kn-draw-thick">thickness</label> <input id="kn-draw-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="2">
             <label for="kn-draw-speed">speed</label>     <input id="kn-draw-speed" data-knob="speed" type="range" min="200" max="3000" step="100" value="1200">
             <label for="kn-draw-radius">radius</label>   <input id="kn-draw-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="12">
-          </div>
-          <code-block language="html" theme="dark"></code-block>
-        </article>
-
-        <article class="effect-card" data-effect="sparks" data-sample-label="Live indicator">
-          <h3>sparks</h3>
-          <border-wc effect="sparks" animate><div class="sample">Live indicator</div></border-wc>
-          <div class="knobs">
-            <label for="kn-sparks-color">color</label>     <input id="kn-sparks-color" data-knob="color" type="color" value="#10b981">
-            <label for="kn-sparks-thick">thickness</label> <input id="kn-sparks-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="2">
-            <label for="kn-sparks-speed">speed</label>     <input id="kn-sparks-speed" data-knob="speed" type="range" min="200" max="3000" step="100" value="1000">
-            <label for="kn-sparks-radius">radius</label>   <input id="kn-sparks-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="12">
           </div>
           <code-block language="html" theme="dark"></code-block>
         </article>

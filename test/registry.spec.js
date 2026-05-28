@@ -23,24 +23,8 @@ const ALL_EFFECTS = [
   'draw',
 ];
 
-// Effects whose modules exist *right now*. Tasks 2–9 grow this list until it
-// equals ALL_EFFECTS at end of refactor. Keep the lists in sync as new modules
-// land — otherwise the reduce-motion sweep will throw on missing imports.
-const IMPLEMENTED = [
-  'lightning',
-  'glitch',
-  'ascii',
-  'stitching',
-  'typewriter',
-  'barbed-wire',
-  'rope',
-  'scallop',
-  'psychedelic',
-  'plasma',
-  'sparks',
-  'squiggle',
-  'draw',
-];
+// All 19 modules exist; the reduce-motion sweep exercises each.
+const IMPLEMENTED = ALL_EFFECTS;
 
 test('registry exposes all 19 effect names', async ({ page }) => {
   await page.goto('/test/test-page.html');
@@ -59,8 +43,11 @@ for (const name of IMPLEMENTED) {
     await page.waitForTimeout(150);
     const ok = await page.evaluate(() => {
       const host = document.getElementById('bw');
-      return !!host.querySelector(
-        'canvas[data-border-wc], svg[data-border-wc], [data-border-wc-chroma]'
+      // Effects mount either a child overlay (svg/canvas/div carrying
+      // data-border-wc) OR mutate the host directly (chroma sets
+      // data-border-wc-chroma on the host).
+      return (
+        !!host.querySelector('[data-border-wc]') || host.hasAttribute('data-border-wc-chroma')
       );
     });
     expect(ok).toBe(true);
