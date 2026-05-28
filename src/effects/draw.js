@@ -68,7 +68,10 @@ export function createDraw(host, params) {
   // Only react to subsequent (actual) resizes.
   let observedOnce = false;
   const ro = new ResizeObserver(() => {
-    if (!observedOnce) { observedOnce = true; return; }
+    if (!observedOnce) {
+      observedOnce = true;
+      return;
+    }
     render(false);
   });
   ro.observe(host);
