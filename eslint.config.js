@@ -11,6 +11,8 @@ export default [
         HTMLElement: 'readonly', CustomEvent: 'readonly', SVGElement: 'readonly',
         IntersectionObserver: 'readonly', ResizeObserver: 'readonly', MutationObserver: 'readonly',
         requestAnimationFrame: 'readonly', cancelAnimationFrame: 'readonly',
+        setInterval: 'readonly', clearInterval: 'readonly',
+        setTimeout: 'readonly', clearTimeout: 'readonly',
         getComputedStyle: 'readonly', matchMedia: 'readonly', performance: 'readonly',
         console: 'readonly',
       },
