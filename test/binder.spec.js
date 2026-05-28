@@ -50,7 +50,7 @@ test('changing the value tears down old overlay and applies the new one', async 
     const el = document.getElementById('ex');
     return (
       !el.querySelector('svg[data-border-wc="squiggle"]') &&
-      !!el.querySelector('canvas[data-border-wc="sparks"]')
+      !!el.querySelector('svg[data-border-wc="sparks"] circle')
     );
   });
 });

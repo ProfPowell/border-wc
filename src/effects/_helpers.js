@@ -70,3 +70,35 @@ export function attachOverlaySvg(host, dataAttr) {
 }
 
 export const SVG_NS = SVGNS;
+
+// Inject a <style> tag once, keyed by `key`. Subsequent calls are no-ops.
+// Effect modules use this to install per-effect CSS keyframes/rules without
+// each instance re-injecting them.
+const STYLE_KEYS = new Set();
+export function ensureStyles(key, css) {
+  if (STYLE_KEYS.has(key)) return;
+  const style = document.createElement('style');
+  style.setAttribute('data-border-wc-styles', key);
+  style.textContent = css;
+  document.head.appendChild(style);
+  STYLE_KEYS.add(key);
+}
+
+// Register the --bwc-angle CSS @property once (no-op if unsupported or already
+// registered). Required for smooth conic-gradient rotation in `aurora`.
+let ANGLE_REGISTERED = false;
+export function ensureAngleProperty() {
+  if (ANGLE_REGISTERED) return;
+  ANGLE_REGISTERED = true;
+  if (typeof CSS === 'undefined' || !CSS.registerProperty) return;
+  try {
+    CSS.registerProperty({
+      name: '--bwc-angle',
+      syntax: '<angle>',
+      inherits: false,
+      initialValue: '0deg',
+    });
+  } catch (_e) {
+    /* already registered */
+  }
+}
