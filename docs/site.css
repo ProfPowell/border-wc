@@ -161,9 +161,30 @@ footer a { color: var(--color-primary); }
   font-family: ui-monospace, monospace;
 }
 
+/* Gallery section TOC under the hero — quick-jump chips for the 6 sections. */
+.gallery-toc {
+  display: flex; flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+.gallery-toc a {
+  font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 6px 12px; border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: color-mix(in oklab, var(--color-foreground) 5%, transparent);
+  text-decoration: none; color: inherit; opacity: 0.85;
+}
+.gallery-toc a:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  opacity: 1;
+  text-decoration: none;
+}
+
 /* ============================================================
-   Gallery playground (docs/index.html): three effect cards with
-   live knobs + copyable code-block snippet.
+   Gallery playground (docs/index.html): 17 effect cards across
+   five sections (energy/organic/retro/pattern/trippy + originals)
+   with live knobs + copyable code-block snippet.
    ============================================================ */
 .playground {
   display: grid;
