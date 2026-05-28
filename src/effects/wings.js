@@ -31,6 +31,9 @@ const WINGS_CSS = `
 function ensurePositioned(host) {
   const cs = getComputedStyle(host);
   if (cs.position === 'static') host.style.position = 'relative';
+  // Force a stacking context so z-index:-1 on the wing layers stays inside the
+  // host instead of dropping behind an opaque ancestor background.
+  if (cs.isolation !== 'isolate') host.style.isolation = 'isolate';
 }
 
 export function createWings(host, params) {
