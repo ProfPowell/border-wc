@@ -13,7 +13,9 @@ export function createGlitch(host, params) {
     c.el.setAttribute('fill', 'none');
     c.el.setAttribute('stroke', c.color);
     c.el.setAttribute('stroke-width', String(params.thickness));
-    c.el.style.mixBlendMode = 'screen';
+    // `screen` blending vanished on light backgrounds. Plain compositing keeps
+    // the RGB-split readable on any host bg; the translate offsets carry the look.
+    c.el.style.mixBlendMode = 'normal';
     svg.appendChild(c.el);
   }
 
