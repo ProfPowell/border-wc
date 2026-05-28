@@ -1,12 +1,19 @@
 import { readParams, reducedMotion } from './params.js';
 import { EFFECTS, styleHost } from './registry.js';
 
+const IO_ROOT_MARGIN = '200px';
+
 class BorderWC extends HTMLElement {
   static get observedAttributes() {
     return ['effect', 'color', 'thickness', 'speed', 'radius', 'animate', 'mode', 'motion'];
   }
   #cleanup = null;
   #token = 0;
+  #observer = null;
+  // Tracks whether the host is currently in (or near) the viewport. Attribute
+  // changes while off-screen are deferred — the IO callback re-applies on the
+  // next intersection.
+  #intersecting = false;
 
   get effect() {
     return this.getAttribute('effect');
@@ -17,16 +24,45 @@ class BorderWC extends HTMLElement {
 
   connectedCallback() {
     styleHost(this);
-    this.#apply();
+    this.#setupVisibility();
   }
   disconnectedCallback() {
+    this.#observer?.disconnect();
+    this.#observer = null;
+    this.#intersecting = false;
     this.#teardown();
   }
   attributeChangedCallback() {
-    if (this.isConnected) this.#apply();
+    if (!this.isConnected) return;
+    if (this.#intersecting) this.#apply();
+    // Off-screen: IO will fire #apply when the host scrolls back into view.
   }
   refresh() {
     this.#apply();
+  }
+
+  #setupVisibility() {
+    // `eager` opts out of lazy init for above-the-fold or always-visible uses.
+    if (this.hasAttribute('eager') || typeof IntersectionObserver === 'undefined') {
+      this.#intersecting = true;
+      this.#apply();
+      return;
+    }
+    this.#observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[entries.length - 1];
+        const inView = entry.isIntersecting;
+        if (inView && !this.#intersecting) {
+          this.#intersecting = true;
+          this.#apply();
+        } else if (!inView && this.#intersecting) {
+          this.#intersecting = false;
+          this.#teardown();
+        }
+      },
+      { rootMargin: IO_ROOT_MARGIN }
+    );
+    this.#observer.observe(this);
   }
 
   #teardown() {
