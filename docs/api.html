@@ -61,7 +61,7 @@
         <table>
           <thead><tr><th>Attribute</th><th>Description</th></tr></thead>
           <tbody>
-            <tr><td><code>effect</code></td><td>One of twenty-two effects — see the <a href="#catalog">Effects catalog</a> below.</td></tr>
+            <tr><td><code>effect</code></td><td>One of twenty-three effects — see the <a href="#catalog">Effects catalog</a> below.</td></tr>
             <tr><td><code>color</code></td><td>Stroke / particle color (any CSS color; defaults to <code>currentColor</code>).</td></tr>
             <tr><td><code>thickness</code></td><td>Stroke width in px (default 2).</td></tr>
             <tr><td><code>speed</code></td><td>Animation duration in ms (default 1000).</td></tr>
@@ -115,6 +115,7 @@
             <tr><td><code>plasma</code></td><td>Trippy</td><td>canvas</td><td>HSL-cycling glow piecewise along the perimeter.</td></tr>
             <tr><td><code>sparks</code></td><td>Marquee</td><td>svg + offset-path</td><td>Comet-tail circles orbiting via <code>offset-path</code>; refactored from canvas in 0.2.</td></tr>
             <tr><td><code>marquee</code></td><td>Marquee</td><td>svg</td><td>Chase-light bulbs with staggered keyframes; <code>mode="chase | sparkle | random"</code>.</td></tr>
+            <tr><td><code>washi</code></td><td>Decoration</td><td>div + svg filter</td><td>Tape strips on the host (not a perimeter). <code>mode="corner | corners | top | bottom | left | right | span | scatter"</code>. Tunables via <code>--washi-pattern</code> (stripe/solid/dot/check/grid), <code>--washi-torn</code> (fray/soft/straight), <code>--washi-width</code>, <code>--washi-length</code>, <code>--washi-angle</code>, <code>--washi-count</code>, <code>--washi-opacity</code>, <code>--washi-color-2</code>.</td></tr>
             <tr><td><code>squiggle</code></td><td>Originals</td><td>svg + feTurbulence</td><td>Hand-drawn turbulence on a stroked path.</td></tr>
             <tr><td><code>draw</code></td><td>Originals</td><td>svg</td><td>One-shot stroke-on reveal (fires <code>border-wc:draw-complete</code>).</td></tr>
           </tbody>
@@ -136,7 +137,7 @@
 
     <section id="data-border-effect">
       <h2>Attribute binder — <code>data-border-effect</code></h2>
-      <p>border-wc shares the <code>data-border-effect</code> attribute with vanilla-breeze's base tier. Base values (<code>spin</code>, <code>pulse</code>, <code>march</code>, <code>hue-cycle</code>, <code>breathe</code>, <code>corner-trace</code>) are owned by vanilla-breeze's CSS — border-wc ignores them. Extreme values — the twenty-two effects in the catalog above — are handled here.</p>
+      <p>border-wc shares the <code>data-border-effect</code> attribute with vanilla-breeze's base tier. Base values (<code>spin</code>, <code>pulse</code>, <code>march</code>, <code>hue-cycle</code>, <code>breathe</code>, <code>corner-trace</code>) are owned by vanilla-breeze's CSS — border-wc ignores them. Extreme values — the twenty-three effects in the catalog above — are handled here.</p>
       <p>To opt in to extreme effects without writing a <code>&lt;border-wc&gt;</code> wrapper, import the binder once:</p>
       <code-block theme="dark" language="javascript">import '@profpowell/border-wc/attr';</code-block>
       <p>Then annotate any element:</p>

@@ -29,6 +29,8 @@ export const EFFECTS = {
   // Marquee
   sparks: () => import('./effects/sparks.js').then((m) => m.createSparks),
   marquee: () => import('./effects/marquee.js').then((m) => m.createMarquee),
+  // Decoration (attachment, not perimeter)
+  washi: () => import('./effects/washi.js').then((m) => m.createWashi),
   // Originals
   squiggle: () => import('./effects/squiggle.js').then((m) => m.createSquiggle),
   draw: () => import('./effects/draw.js').then((m) => m.createDraw),

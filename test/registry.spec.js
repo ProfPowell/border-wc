@@ -22,6 +22,7 @@ const ALL_EFFECTS = [
   'plasma',
   'sparks',
   'marquee',
+  'washi',
   'squiggle',
   'draw',
 ];

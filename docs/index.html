@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>border-wc — gallery</title>
-  <meta name="description" content="border-wc — 22 CSS-first border effects: aurora (conic-gradient halo), barber stripes, chromatic aberration, neon glow, marquee bulbs, sawtooth zigzag, sine waves, and more. Live knobs, copyable snippets.">
+  <meta name="description" content="border-wc — 23 CSS-first border effects: aurora (conic-gradient halo), barber stripes, chromatic aberration, neon glow, marquee bulbs, sawtooth zigzag, sine waves, washi tape, and more. Live knobs, copyable snippets.">
   <script>
     (() => {
       const vb = new URL('../vb', document.baseURI).href.replace(/\/$/, '');
@@ -36,7 +36,7 @@
   <main class="content">
     <header class="page-head">
       <h1>border-wc</h1>
-      <p class="muted">Extreme border effects the platform under-serves — twenty-two of them, CSS-first. Tweak the knobs and copy the snippet.</p>
+      <p class="muted">Extreme border effects the platform under-serves — twenty-three of them, CSS-first. Tweak the knobs and copy the snippet.</p>
       <nav class="gallery-toc" aria-label="Effects sections">
         <a href="#modern">Modern CSS</a>
         <a href="#energy">Energy</a>
@@ -44,6 +44,7 @@
         <a href="#pattern">Pattern</a>
         <a href="#trippy">Trippy</a>
         <a href="#marquee">Marquee</a>
+        <a href="#decoration">Decoration</a>
         <a href="#originals">Originals</a>
       </nav>
     </header>
@@ -335,6 +336,49 @@
             <label for="kn-marquee-thick">thickness</label> <input id="kn-marquee-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="3">
             <label for="kn-marquee-speed">speed</label>     <input id="kn-marquee-speed" data-knob="speed" type="range" min="200" max="3000" step="100" value="1400">
             <label for="kn-marquee-radius">radius</label>   <input id="kn-marquee-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="14">
+          </div>
+          <code-block language="html" theme="dark"></code-block>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="decoration">
+      <h2>Decoration</h2>
+      <div class="playground">
+
+        <article class="effect-card" data-border-effect="washi" data-sample-label="Journal">
+          <h3>washi</h3>
+          <border-wc effect="washi" color="#9be3b5" mode="corners"><div class="sample">Journal</div></border-wc>
+          <div class="knobs">
+            <label for="kn-washi-color">color</label>     <input id="kn-washi-color" data-knob="color" type="color" value="#9be3b5">
+            <label for="kn-washi-mode">mode</label>
+            <select id="kn-washi-mode" data-knob="mode">
+              <option value="corners">corners</option>
+              <option value="corner">corner</option>
+              <option value="top">top</option>
+              <option value="bottom">bottom</option>
+              <option value="left">left</option>
+              <option value="right">right</option>
+              <option value="span">span</option>
+              <option value="scatter">scatter</option>
+            </select>
+            <label for="kn-washi-pattern">pattern</label>
+            <select id="kn-washi-pattern" data-knob="washi-pattern" data-knob-target="style">
+              <option value="stripe">stripe</option>
+              <option value="solid">solid</option>
+              <option value="dot">dot</option>
+              <option value="check">check</option>
+              <option value="grid">grid</option>
+            </select>
+            <label for="kn-washi-torn">torn</label>
+            <select id="kn-washi-torn" data-knob="washi-torn" data-knob-target="style">
+              <option value="fray">fray</option>
+              <option value="soft">soft</option>
+              <option value="straight">straight</option>
+            </select>
+            <label for="kn-washi-width">width</label>   <input id="kn-washi-width" data-knob="washi-width" data-knob-target="style" type="range" min="14" max="50" step="2" value="30">
+            <label for="kn-washi-length">length</label> <input id="kn-washi-length" data-knob="washi-length" data-knob-target="style" type="range" min="60" max="240" step="10" value="130">
           </div>
           <code-block language="html" theme="dark"></code-block>
         </article>
