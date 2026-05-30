@@ -1,14 +1,16 @@
 import { test, expect } from '@playwright/test';
 
-// Current effect catalog: 19 from the CSS-first refresh + scoop/zigzag/wave.
+// Current effect catalog.
 const ALL_EFFECTS = [
   'aurora',
   'barber',
   'chroma',
   'wings',
+  'ants',
   'lightning',
   'neon',
   'glitch',
+  'hud',
   'ascii',
   'stitching',
   'typewriter',
@@ -18,11 +20,18 @@ const ALL_EFFECTS = [
   'scoop',
   'zigzag',
   'wave',
+  'deco',
+  'memphis',
+  'opart',
   'psychedelic',
   'plasma',
+  'gooey',
   'sparks',
   'marquee',
   'washi',
+  'filmstrip',
+  'ticket',
+  'bunting',
   'squiggle',
   'draw',
 ];

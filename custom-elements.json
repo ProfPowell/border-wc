@@ -566,7 +566,7 @@
           "type": {
             "text": "object"
           },
-          "default": "{ // Modern CSS aurora: () => import('./effects/aurora.js').then((m) => m.createAurora), barber: () => import('./effects/barber.js').then((m) => m.createBarber), chroma: () => import('./effects/chroma.js').then((m) => m.createChroma), wings: () => import('./effects/wings.js').then((m) => m.createWings), // Energy lightning: () => import('./effects/lightning.js').then((m) => m.createLightning), neon: () => import('./effects/neon.js').then((m) => m.createNeon), glitch: () => import('./effects/glitch.js').then((m) => m.createGlitch), // Retro / Craft ascii: () => import('./effects/ascii.js').then((m) => m.createAscii), stitching: () => import('./effects/stitching.js').then((m) => m.createStitching), typewriter: () => import('./effects/typewriter.js').then((m) => m.createTypewriter), // Pattern 'barbed-wire': () => import('./effects/barbed-wire.js').then((m) => m.createBarbedWire), rope: () => import('./effects/rope.js').then((m) => m.createRope), scallop: () => import('./effects/scallop.js').then((m) => m.createScallop), scoop: () => import('./effects/scoop.js').then((m) => m.createScoop), zigzag: () => import('./effects/zigzag.js').then((m) => m.createZigzag), wave: () => import('./effects/wave.js').then((m) => m.createWave), // Trippy psychedelic: () => import('./effects/psychedelic.js').then((m) => m.createPsychedelic), plasma: () => import('./effects/plasma.js').then((m) => m.createPlasma), // Marquee sparks: () => import('./effects/sparks.js').then((m) => m.createSparks), marquee: () => import('./effects/marquee.js').then((m) => m.createMarquee), // Decoration (attachment, not perimeter) washi: () => import('./effects/washi.js').then((m) => m.createWashi), // Originals squiggle: () => import('./effects/squiggle.js').then((m) => m.createSquiggle), draw: () => import('./effects/draw.js').then((m) => m.createDraw), }"
+          "default": "{ // Modern CSS aurora: () => import('./effects/aurora.js').then((m) => m.createAurora), barber: () => import('./effects/barber.js').then((m) => m.createBarber), chroma: () => import('./effects/chroma.js').then((m) => m.createChroma), wings: () => import('./effects/wings.js').then((m) => m.createWings), ants: () => import('./effects/ants.js').then((m) => m.createAnts), // Energy lightning: () => import('./effects/lightning.js').then((m) => m.createLightning), neon: () => import('./effects/neon.js').then((m) => m.createNeon), glitch: () => import('./effects/glitch.js').then((m) => m.createGlitch), hud: () => import('./effects/hud.js').then((m) => m.createHud), // Retro / Craft ascii: () => import('./effects/ascii.js').then((m) => m.createAscii), stitching: () => import('./effects/stitching.js').then((m) => m.createStitching), typewriter: () => import('./effects/typewriter.js').then((m) => m.createTypewriter), // Pattern 'barbed-wire': () => import('./effects/barbed-wire.js').then((m) => m.createBarbedWire), rope: () => import('./effects/rope.js').then((m) => m.createRope), scallop: () => import('./effects/scallop.js').then((m) => m.createScallop), scoop: () => import('./effects/scoop.js').then((m) => m.createScoop), zigzag: () => import('./effects/zigzag.js').then((m) => m.createZigzag), wave: () => import('./effects/wave.js').then((m) => m.createWave), deco: () => import('./effects/deco.js').then((m) => m.createDeco), memphis: () => import('./effects/memphis.js').then((m) => m.createMemphis), opart: () => import('./effects/opart.js').then((m) => m.createOpart), // Trippy psychedelic: () => import('./effects/psychedelic.js').then((m) => m.createPsychedelic), plasma: () => import('./effects/plasma.js').then((m) => m.createPlasma), gooey: () => import('./effects/gooey.js').then((m) => m.createGooey), // Marquee sparks: () => import('./effects/sparks.js').then((m) => m.createSparks), marquee: () => import('./effects/marquee.js').then((m) => m.createMarquee), // Decoration (attachment, not perimeter) washi: () => import('./effects/washi.js').then((m) => m.createWashi), filmstrip: () => import('./effects/filmstrip.js').then((m) => m.createFilmstrip), ticket: () => import('./effects/ticket.js').then((m) => m.createTicket), bunting: () => import('./effects/bunting.js').then((m) => m.createBunting), // Originals squiggle: () => import('./effects/squiggle.js').then((m) => m.createSquiggle), draw: () => import('./effects/draw.js').then((m) => m.createDraw), }"
         },
         {
           "kind": "variable",
@@ -706,6 +706,34 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/effects/ants.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "createAnts",
+          "parameters": [
+            {
+              "name": "host"
+            },
+            {
+              "name": "params"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "createAnts",
+          "declaration": {
+            "name": "createAnts",
+            "module": "src/effects/ants.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/effects/ascii.js",
       "declarations": [
         {
@@ -818,6 +846,34 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/effects/bunting.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "createBunting",
+          "parameters": [
+            {
+              "name": "host"
+            },
+            {
+              "name": "params"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "createBunting",
+          "declaration": {
+            "name": "createBunting",
+            "module": "src/effects/bunting.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/effects/chroma.js",
       "declarations": [
         {
@@ -840,6 +896,34 @@
           "declaration": {
             "name": "createChroma",
             "module": "src/effects/chroma.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/effects/deco.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "createDeco",
+          "parameters": [
+            {
+              "name": "host"
+            },
+            {
+              "name": "params"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "createDeco",
+          "declaration": {
+            "name": "createDeco",
+            "module": "src/effects/deco.js"
           }
         }
       ]
@@ -874,6 +958,34 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/effects/filmstrip.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "createFilmstrip",
+          "parameters": [
+            {
+              "name": "host"
+            },
+            {
+              "name": "params"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "createFilmstrip",
+          "declaration": {
+            "name": "createFilmstrip",
+            "module": "src/effects/filmstrip.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/effects/glitch.js",
       "declarations": [
         {
@@ -896,6 +1008,62 @@
           "declaration": {
             "name": "createGlitch",
             "module": "src/effects/glitch.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/effects/gooey.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "createGooey",
+          "parameters": [
+            {
+              "name": "host"
+            },
+            {
+              "name": "params"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "createGooey",
+          "declaration": {
+            "name": "createGooey",
+            "module": "src/effects/gooey.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/effects/hud.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "createHud",
+          "parameters": [
+            {
+              "name": "host"
+            },
+            {
+              "name": "params"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "createHud",
+          "declaration": {
+            "name": "createHud",
+            "module": "src/effects/hud.js"
           }
         }
       ]
@@ -958,6 +1126,34 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/effects/memphis.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "createMemphis",
+          "parameters": [
+            {
+              "name": "host"
+            },
+            {
+              "name": "params"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "createMemphis",
+          "declaration": {
+            "name": "createMemphis",
+            "module": "src/effects/memphis.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/effects/neon.js",
       "declarations": [
         {
@@ -980,6 +1176,34 @@
           "declaration": {
             "name": "createNeon",
             "module": "src/effects/neon.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/effects/opart.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "createOpart",
+          "parameters": [
+            {
+              "name": "host"
+            },
+            {
+              "name": "params"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "createOpart",
+          "declaration": {
+            "name": "createOpart",
+            "module": "src/effects/opart.js"
           }
         }
       ]
@@ -1204,6 +1428,34 @@
           "declaration": {
             "name": "createStitching",
             "module": "src/effects/stitching.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/effects/ticket.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "createTicket",
+          "parameters": [
+            {
+              "name": "host"
+            },
+            {
+              "name": "params"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "createTicket",
+          "declaration": {
+            "name": "createTicket",
+            "module": "src/effects/ticket.js"
           }
         }
       ]
