@@ -227,6 +227,15 @@ footer a { color: var(--color-primary); }
   font-size: 15px;
 }
 .effect-card border-wc { display: block; }
+/* Effects that paint a body fill behind slot content (e.g. ticket) need the
+   sample's own background cleared so the fill shows through. */
+.effect-card[data-border-effect="ticket"] .sample {
+  background: transparent;
+  color: oklch(0.3 0.05 55);
+  font-family: var(--font-display, ui-serif, Georgia, serif);
+  font-style: italic;
+  font-size: 18px;
+}
 .effect-card .knobs {
   display: grid;
   grid-template-columns: auto 1fr;
