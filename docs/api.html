@@ -61,7 +61,7 @@
         <table>
           <thead><tr><th>Attribute</th><th>Description</th></tr></thead>
           <tbody>
-            <tr><td><code>effect</code></td><td>One of twenty-three effects — see the <a href="#catalog">Effects catalog</a> below.</td></tr>
+            <tr><td><code>effect</code></td><td>One of thirty-two effects — see the <a href="#catalog">Effects catalog</a> below.</td></tr>
             <tr><td><code>color</code></td><td>Stroke / particle color (any CSS color; defaults to <code>currentColor</code>).</td></tr>
             <tr><td><code>thickness</code></td><td>Stroke width in px (default 2).</td></tr>
             <tr><td><code>speed</code></td><td>Animation duration in ms (default 1000).</td></tr>
@@ -99,9 +99,11 @@
             <tr><td><code>barber</code></td><td>Modern CSS</td><td>div + repeating-linear</td><td>Scrolling diagonal stripes; <code>mode="warning | candy | racing"</code> presets.</td></tr>
             <tr><td><code>chroma</code></td><td>Modern CSS</td><td>host box-shadow</td><td>8-direction chromatic-aberration shadow stack on the host element.</td></tr>
             <tr><td><code>wings</code></td><td>Modern CSS</td><td>div + clip-path</td><td>Two oversized colored triangles morphing behind the card; <code>mix-blend-mode: multiply</code>.</td></tr>
+            <tr><td><code>ants</code></td><td>Modern CSS</td><td>svg</td><td>Photoshop-style marching-ants selection — animated <code>stroke-dashoffset</code> with white underlay.</td></tr>
             <tr><td><code>lightning</code></td><td>Energy</td><td>svg + feGaussianBlur</td><td>Jagged glowing bolts at evenly-spaced anchor points; refactored from canvas in 0.2.</td></tr>
             <tr><td><code>neon</code></td><td>Energy</td><td>svg + feMerge</td><td>Crisp stroked path with a real <code>feGaussianBlur+feMerge</code> halo (SMIL pulse).</td></tr>
             <tr><td><code>glitch</code></td><td>Energy</td><td>svg</td><td>RGB-split stroked paths with random offsets.</td></tr>
+            <tr><td><code>hud</code></td><td>Energy</td><td>svg + div</td><td>Cyberpunk FUI: corner brackets + edge tick-marks + sweeping scan line. Host left untouched.</td></tr>
             <tr><td><code>ascii</code></td><td>Retro/Craft</td><td>svg text</td><td>Monospace + - | characters at corners and edges (one-shot reveal).</td></tr>
             <tr><td><code>stitching</code></td><td>Retro/Craft</td><td>svg</td><td>Dashed stitches sew themselves around the perimeter.</td></tr>
             <tr><td><code>typewriter</code></td><td>Retro/Craft</td><td>svg text</td><td>Per-char reveal; use <code>data-text</code> on the host for custom glyphs.</td></tr>
@@ -111,11 +113,18 @@
             <tr><td><code>scoop</code></td><td>Pattern</td><td>svg</td><td>Inverse of scallop: concave bites cut into each edge (postage-stamp from the back). One-shot dashoffset reveal.</td></tr>
             <tr><td><code>zigzag</code></td><td>Pattern</td><td>svg</td><td>Sawtooth perimeter; optional marching-dashes loop.</td></tr>
             <tr><td><code>wave</code></td><td>Pattern</td><td>svg</td><td>Smooth sine perimeter via quad beziers; optional marching-dashes loop.</td></tr>
+            <tr><td><code>deco</code></td><td>Pattern</td><td>svg</td><td>Art Deco: double stroked perimeter + radiating sunburst fans at each corner.</td></tr>
+            <tr><td><code>memphis</code></td><td>Pattern</td><td>svg</td><td>Memphis confetti: arc-length sampler scatters mixed shapes with staggered bob animation.</td></tr>
+            <tr><td><code>opart</code></td><td>Pattern</td><td>div + mask-composite</td><td>Op-Art moiré ring: crossed <code>repeating-linear-gradient</code> stripes masked into a perimeter band, shifted for shimmer.</td></tr>
             <tr><td><code>psychedelic</code></td><td>Trippy</td><td>svg</td><td>Rainbow gradient stroke + hue-rotate + marching dashes.</td></tr>
             <tr><td><code>plasma</code></td><td>Trippy</td><td>canvas</td><td>HSL-cycling glow piecewise along the perimeter.</td></tr>
+            <tr><td><code>gooey</code></td><td>Trippy</td><td>svg + feColorMatrix</td><td>Metaball ring: feGaussianBlur + alpha-boost ColorMatrix merge blobs orbiting along the perimeter via <code>offset-path</code>.</td></tr>
             <tr><td><code>sparks</code></td><td>Marquee</td><td>svg + offset-path</td><td>Comet-tail circles orbiting via <code>offset-path</code>; refactored from canvas in 0.2.</td></tr>
             <tr><td><code>marquee</code></td><td>Marquee</td><td>svg</td><td>Chase-light bulbs with staggered keyframes; <code>mode="chase | sparkle | random"</code>.</td></tr>
             <tr><td><code>washi</code></td><td>Decoration</td><td>div + svg filter</td><td>Tape strips on the host (not a perimeter). <code>mode="corner | corners | top | bottom | left | right | span | scatter"</code>. Tunables via <code>--washi-pattern</code> (stripe/solid/dot/check/grid), <code>--washi-torn</code> (fray/soft/straight), <code>--washi-width</code>, <code>--washi-length</code>, <code>--washi-angle</code>, <code>--washi-count</code>, <code>--washi-opacity</code>, <code>--washi-color-2</code>.</td></tr>
+            <tr><td><code>filmstrip</code></td><td>Decoration</td><td>div</td><td>Two sprocket-hole bars top + bottom (radial-gradient pattern). Body untouched.</td></tr>
+            <tr><td><code>ticket</code></td><td>Decoration</td><td>svg</td><td>Notched perimeter (semicircle dips at ~70% along top/bottom) with a dashed tear line. Body fill is in the SVG.</td></tr>
+            <tr><td><code>bunting</code></td><td>Decoration</td><td>svg</td><td>Pennant flags hanging from a quadratic swag along the top edge; each pennant sways with a staggered delay.</td></tr>
             <tr><td><code>squiggle</code></td><td>Originals</td><td>svg + feTurbulence</td><td>Hand-drawn turbulence on a stroked path.</td></tr>
             <tr><td><code>draw</code></td><td>Originals</td><td>svg</td><td>One-shot stroke-on reveal (fires <code>border-wc:draw-complete</code>).</td></tr>
           </tbody>
@@ -137,7 +146,7 @@
 
     <section id="data-border-effect">
       <h2>Attribute binder — <code>data-border-effect</code></h2>
-      <p>border-wc shares the <code>data-border-effect</code> attribute with vanilla-breeze's base tier. Base values (<code>spin</code>, <code>pulse</code>, <code>march</code>, <code>hue-cycle</code>, <code>breathe</code>, <code>corner-trace</code>) are owned by vanilla-breeze's CSS — border-wc ignores them. Extreme values — the twenty-three effects in the catalog above — are handled here.</p>
+      <p>border-wc shares the <code>data-border-effect</code> attribute with vanilla-breeze's base tier. Base values (<code>spin</code>, <code>pulse</code>, <code>march</code>, <code>hue-cycle</code>, <code>breathe</code>, <code>corner-trace</code>) are owned by vanilla-breeze's CSS — border-wc ignores them. Extreme values — the thirty-two effects in the catalog above — are handled here.</p>
       <p>To opt in to extreme effects without writing a <code>&lt;border-wc&gt;</code> wrapper, import the binder once:</p>
       <code-block theme="dark" language="javascript">import '@profpowell/border-wc/attr';</code-block>
       <p>Then annotate any element:</p>

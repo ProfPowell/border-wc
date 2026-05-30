@@ -8,10 +8,12 @@ export const EFFECTS = {
   barber: () => import('./effects/barber.js').then((m) => m.createBarber),
   chroma: () => import('./effects/chroma.js').then((m) => m.createChroma),
   wings: () => import('./effects/wings.js').then((m) => m.createWings),
+  ants: () => import('./effects/ants.js').then((m) => m.createAnts),
   // Energy
   lightning: () => import('./effects/lightning.js').then((m) => m.createLightning),
   neon: () => import('./effects/neon.js').then((m) => m.createNeon),
   glitch: () => import('./effects/glitch.js').then((m) => m.createGlitch),
+  hud: () => import('./effects/hud.js').then((m) => m.createHud),
   // Retro / Craft
   ascii: () => import('./effects/ascii.js').then((m) => m.createAscii),
   stitching: () => import('./effects/stitching.js').then((m) => m.createStitching),
@@ -23,14 +25,21 @@ export const EFFECTS = {
   scoop: () => import('./effects/scoop.js').then((m) => m.createScoop),
   zigzag: () => import('./effects/zigzag.js').then((m) => m.createZigzag),
   wave: () => import('./effects/wave.js').then((m) => m.createWave),
+  deco: () => import('./effects/deco.js').then((m) => m.createDeco),
+  memphis: () => import('./effects/memphis.js').then((m) => m.createMemphis),
+  opart: () => import('./effects/opart.js').then((m) => m.createOpart),
   // Trippy
   psychedelic: () => import('./effects/psychedelic.js').then((m) => m.createPsychedelic),
   plasma: () => import('./effects/plasma.js').then((m) => m.createPlasma),
+  gooey: () => import('./effects/gooey.js').then((m) => m.createGooey),
   // Marquee
   sparks: () => import('./effects/sparks.js').then((m) => m.createSparks),
   marquee: () => import('./effects/marquee.js').then((m) => m.createMarquee),
   // Decoration (attachment, not perimeter)
   washi: () => import('./effects/washi.js').then((m) => m.createWashi),
+  filmstrip: () => import('./effects/filmstrip.js').then((m) => m.createFilmstrip),
+  ticket: () => import('./effects/ticket.js').then((m) => m.createTicket),
+  bunting: () => import('./effects/bunting.js').then((m) => m.createBunting),
   // Originals
   squiggle: () => import('./effects/squiggle.js').then((m) => m.createSquiggle),
   draw: () => import('./effects/draw.js').then((m) => m.createDraw),
