@@ -161,30 +161,61 @@ footer a { color: var(--color-primary); }
   font-family: ui-monospace, monospace;
 }
 
-/* Gallery section TOC under the hero — quick-jump chips for the 6 sections. */
-.gallery-toc {
+/* Group tabs under the hero — exactly one of (lines/glow/glitch/decor) is
+   visible at a time, so the page stays under the browser's animation budget
+   AND the user isn't asked to scroll past 32 cards on first paint. */
+.group-tabs {
   display: flex; flex-wrap: wrap;
   gap: 8px;
-  margin-top: 16px;
+  margin-top: 18px;
 }
-.gallery-toc a {
-  font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
-  padding: 6px 12px; border-radius: 999px;
+.group-tab {
+  font: inherit; cursor: pointer;
+  font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 8px 14px; border-radius: 999px;
   border: 1px solid var(--color-border);
   background: color-mix(in oklab, var(--color-foreground) 5%, transparent);
-  text-decoration: none; color: inherit; opacity: 0.85;
+  color: inherit; opacity: 0.85;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: border-color .15s, color .15s, background-color .15s, opacity .15s;
 }
-.gallery-toc a:hover {
+.group-tab .count {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px;
+  padding: 2px 7px; border-radius: 999px;
+  background: color-mix(in oklab, var(--color-foreground) 10%, transparent);
+  opacity: 0.75;
+}
+.group-tab:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
   opacity: 1;
-  text-decoration: none;
+}
+.group-tab[aria-selected="true"] {
+  background: var(--color-primary);
+  color: var(--color-on-primary, white);
+  border-color: var(--color-primary);
+  opacity: 1;
+}
+.group-tab[aria-selected="true"] .count {
+  background: color-mix(in oklab, white 25%, transparent);
+  opacity: 1;
+}
+
+/* Hide non-active group cards. Display:none also stops their effects from
+   initializing (the IO never sees them as intersecting), so switching groups
+   is genuinely cheap. */
+body[data-active-group="lines"]  .effect-card:not([data-group="lines"]),
+body[data-active-group="glow"]   .effect-card:not([data-group="glow"]),
+body[data-active-group="glitch"] .effect-card:not([data-group="glitch"]),
+body[data-active-group="decor"]  .effect-card:not([data-group="decor"]) {
+  display: none;
 }
 
 /* ============================================================
-   Gallery playground (docs/index.html): 17 effect cards across
-   five sections (energy/organic/retro/pattern/trippy + originals)
-   with live knobs + copyable code-block snippet.
+   Gallery playground (docs/index.html): 32 effect cards in a
+   single grid with live knobs + copyable code-block snippet.
+   Only the active group is visible at a time (see .group-tabs).
    ============================================================ */
 .playground {
   display: grid;
