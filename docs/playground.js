@@ -46,7 +46,7 @@ function setupCard(card) {
       }
     }
 
-    const { color, thickness, speed, radius, mode } = attrs;
+    const { color, thickness, speed, radius, mode, trigger } = attrs;
     // Empty color string = "use the effect's default theme palette".
     if (color) win.setAttribute('color', color);
     else win.removeAttribute('color');
@@ -54,6 +54,8 @@ function setupCard(card) {
     if (speed != null) win.setAttribute('speed', speed);
     if (radius != null) win.setAttribute('radius', radius);
     if (mode) win.setAttribute('mode', mode);
+    if (trigger) win.setAttribute('trigger', trigger);
+    else win.removeAttribute('trigger');
     if (radius != null) sample.style.borderRadius = radius + 'px';
 
     for (const { prop, value } of styles) {
@@ -66,6 +68,7 @@ function setupCard(card) {
     const speedAttr = speed != null ? ` speed="${speed}"` : '';
     const radiusAttr = radius != null ? ` radius="${radius}"` : '';
     const modeAttr = mode ? ` mode="${mode}"` : '';
+    const triggerAttr = trigger ? ` trigger="${trigger}"` : '';
     const styleAttr = styles.length
       ? ` style="${styles
           .filter((s) => s.value !== '' && s.value != null)
@@ -74,7 +77,7 @@ function setupCard(card) {
       : '';
     const snippet =
       `<border-wc effect="${effect}"${colorAttr}${thickAttr}\n` +
-      `           ${speedAttr.trimStart()}${radiusAttr}${modeAttr}${styleAttr} animate>\n` +
+      `           ${speedAttr.trimStart()}${radiusAttr}${modeAttr}${triggerAttr}${styleAttr} animate>\n` +
       `  <div class="sample">${label}</div>\n` +
       `</border-wc>`;
     writeSnippet(codeBlock, snippet);

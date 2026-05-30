@@ -32,6 +32,34 @@ test('draw stroke animation actually runs over `speed` ms (not instantly)', asyn
   expect(elapsed).toBeLessThan(SPEED * 2.5);
 });
 
+test('draw trigger="scroll" attaches the bwc-scroll class (when supported)', async ({ page }) => {
+  await page.goto('/test/test-page.html');
+  const r = await page.evaluate(async () => {
+    const el = document.getElementById('bw');
+    el.setAttribute('trigger', 'scroll');
+    el.setAttribute('animate', '');
+    el.setAttribute('effect', 'draw');
+    await new Promise((r) => setTimeout(r, 150));
+    const path = el.querySelector('svg[data-border-wc="draw"] path');
+    return {
+      supported: CSS.supports('animation-timeline', 'view()'),
+      hasScrollClass: !!path && path.classList.contains('bwc-scroll'),
+      dashoffset: path && path.style.strokeDashoffset,
+      dasharray: path && path.style.strokeDasharray,
+    };
+  });
+  // Chromium supports scroll-driven animations; the path should opt into the class.
+  if (r.supported) {
+    expect(r.hasScrollClass).toBe(true);
+    // Initial offset = path length (un-drawn), revealed by the scroll-driven keyframes.
+    expect(parseFloat(r.dashoffset)).toBeGreaterThan(0);
+    expect(parseFloat(r.dasharray)).toBeGreaterThan(0);
+  } else {
+    // Unsupported engines fall through to fully-drawn — no class, dashoffset 0.
+    expect(r.hasScrollClass).toBe(false);
+  }
+});
+
 test('draw replay (refresh) re-runs the animation', async ({ page }) => {
   await page.goto('/test/test-page.html');
   const result = await page.evaluate(() => new Promise((res) => {

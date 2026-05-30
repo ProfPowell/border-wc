@@ -68,6 +68,7 @@
             <tr><td><code>radius</code></td><td>Corner radius in px. Falls back to the host's computed <code>border-radius</code>.</td></tr>
             <tr><td><code>animate</code></td><td>Boolean. When present, plays the entrance / loop animation.</td></tr>
             <tr><td><code>mode</code></td><td>Effect-specific placement mode (e.g. <code>center</code>).</td></tr>
+            <tr><td><code>trigger</code></td><td>Effect-specific reveal trigger (e.g. <code>time</code> | <code>scroll</code> on <code>draw</code>).</td></tr>
             <tr><td><code>motion</code></td><td><code>auto</code> | <code>reduce</code> | <code>force</code> — overrides <code>prefers-reduced-motion</code>.</td></tr>
           </tbody>
         </table>
@@ -101,7 +102,7 @@
             <tr><td><code>wings</code></td><td>Modern CSS</td><td>div + clip-path</td><td>Two oversized colored triangles morphing behind the card; <code>mix-blend-mode: multiply</code>.</td></tr>
             <tr><td><code>ants</code></td><td>Modern CSS</td><td>svg</td><td>Photoshop-style marching-ants selection — animated <code>stroke-dashoffset</code> with white underlay.</td></tr>
             <tr><td><code>lightning</code></td><td>Energy</td><td>svg + feGaussianBlur</td><td>Jagged glowing bolts at evenly-spaced anchor points; refactored from canvas in 0.2.</td></tr>
-            <tr><td><code>neon</code></td><td>Energy</td><td>svg + feMerge</td><td>Crisp stroked path with a real <code>feGaussianBlur+feMerge</code> halo (SMIL pulse).</td></tr>
+            <tr><td><code>neon</code></td><td>Energy</td><td>svg + feMerge</td><td>Crisp stroked path with a real <code>feGaussianBlur+feMerge</code> halo (SMIL pulse). <code>mode="synthwave"</code> swaps the stroke for a 3-stop cyan→magenta→orange gradient, widens the bloom, and adds a sweeping horizontal scanline.</td></tr>
             <tr><td><code>glitch</code></td><td>Energy</td><td>svg</td><td>RGB-split stroked paths with random offsets.</td></tr>
             <tr><td><code>hud</code></td><td>Energy</td><td>svg + div</td><td>Cyberpunk FUI: corner brackets + edge tick-marks + sweeping scan line. Host left untouched.</td></tr>
             <tr><td><code>ascii</code></td><td>Retro/Craft</td><td>svg text</td><td>Monospace + - | characters at corners and edges (one-shot reveal).</td></tr>
@@ -126,7 +127,7 @@
             <tr><td><code>ticket</code></td><td>Decoration</td><td>svg</td><td>Notched perimeter (semicircle dips at ~70% along top/bottom) with a dashed tear line. Body fill is in the SVG.</td></tr>
             <tr><td><code>bunting</code></td><td>Decoration</td><td>svg</td><td>Pennant flags hanging from a quadratic swag along the top edge; each pennant sways with a staggered delay.</td></tr>
             <tr><td><code>squiggle</code></td><td>Originals</td><td>svg + feTurbulence</td><td>Hand-drawn turbulence on a stroked path.</td></tr>
-            <tr><td><code>draw</code></td><td>Originals</td><td>svg</td><td>One-shot stroke-on reveal (fires <code>border-wc:draw-complete</code>).</td></tr>
+            <tr><td><code>draw</code></td><td>Originals</td><td>svg</td><td>One-shot stroke-on reveal (fires <code>border-wc:draw-complete</code>). <code>trigger="scroll"</code> drives the reveal via <code>animation-timeline: view()</code> as the host enters the viewport; degrades to a fully-drawn border on engines without scroll-driven animations.</td></tr>
           </tbody>
         </table>
       </div>
