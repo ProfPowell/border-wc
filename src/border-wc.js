@@ -5,7 +5,17 @@ const IO_ROOT_MARGIN = '200px';
 
 class BorderWC extends HTMLElement {
   static get observedAttributes() {
-    return ['effect', 'color', 'thickness', 'speed', 'radius', 'animate', 'mode', 'motion'];
+    return [
+      'effect',
+      'color',
+      'thickness',
+      'speed',
+      'radius',
+      'animate',
+      'mode',
+      'motion',
+      'trigger',
+    ];
   }
   #cleanup = null;
   #token = 0;

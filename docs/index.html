@@ -142,6 +142,11 @@
           <h3>neon</h3>
           <border-wc effect="neon" animate><div class="sample">OPEN</div></border-wc>
           <div class="knobs">
+            <label for="kn-neon-mode">mode</label>
+            <select id="kn-neon-mode" data-knob="mode">
+              <option value="">center</option>
+              <option value="synthwave">synthwave</option>
+            </select>
             <label for="kn-neon-color">color</label>     <input id="kn-neon-color" data-knob="color" type="color" value="#ff2bd6">
             <label for="kn-neon-thick">thickness</label> <input id="kn-neon-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="3">
             <label for="kn-neon-speed">speed</label>     <input id="kn-neon-speed" data-knob="speed" type="range" min="200" max="3000" step="100" value="1400">
@@ -514,6 +519,11 @@
           <h3>draw <button type="button" class="replay" data-replay aria-label="Replay draw animation">&#9654; Replay</button></h3>
           <border-wc effect="draw" animate><div class="sample">Stroke-on</div></border-wc>
           <div class="knobs">
+            <label for="kn-draw-trigger">trigger</label>
+            <select id="kn-draw-trigger" data-knob="trigger">
+              <option value="">time</option>
+              <option value="scroll">scroll</option>
+            </select>
             <label for="kn-draw-color">color</label>     <input id="kn-draw-color" data-knob="color" type="color" value="#3b82f6">
             <label for="kn-draw-thick">thickness</label> <input id="kn-draw-thick" data-knob="thickness" type="range" min="1" max="6" step="0.5" value="2">
             <label for="kn-draw-speed">speed</label>     <input id="kn-draw-speed" data-knob="speed" type="range" min="200" max="3000" step="100" value="1200">
