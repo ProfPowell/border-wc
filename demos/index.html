@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>border-wc — themed demos</title>
-  <meta name="description" content="Three themed demos showing border-wc effects in real design contexts: Notebook (squiggle), Sketchbook (draw), Achievement (sparks).">
+  <meta name="description" content="Six themed demos showing border-wc effects in real design contexts: Notebook (squiggle), Sketchbook (draw), Achievement (sparks), Receipt (ticket), Synthwave (neon · synthwave mode), Mission Control (hud).">
   <script>
     (() => {
       const vb = new URL('../vb', document.baseURI).href.replace(/\/$/, '');
@@ -59,6 +59,27 @@
                         url="profpowell.github.io/border-wc/demos/achievement.html"></browser-window>
         <a class="bw-open" href="./achievement.html" aria-label="Open the Achievement demo"></a>
         <div class="meta"><span class="name">Achievement</span><span class="desc">sparks · unlocked badges</span></div>
+      </div>
+
+      <div class="bw-card">
+        <browser-window mode="light" shadow data-demo-src="./receipt.html" title="Receipt"
+                        url="profpowell.github.io/border-wc/demos/receipt.html"></browser-window>
+        <a class="bw-open" href="./receipt.html" aria-label="Open the Receipt demo"></a>
+        <div class="meta"><span class="name">Receipt</span><span class="desc">ticket · perforated stubs</span></div>
+      </div>
+
+      <div class="bw-card">
+        <browser-window mode="dark" shadow data-demo-src="./synthwave.html" title="Synthwave"
+                        url="profpowell.github.io/border-wc/demos/synthwave.html"></browser-window>
+        <a class="bw-open" href="./synthwave.html" aria-label="Open the Synthwave demo"></a>
+        <div class="meta"><span class="name">Synthwave</span><span class="desc">neon · synthwave mode</span></div>
+      </div>
+
+      <div class="bw-card">
+        <browser-window mode="dark" shadow data-demo-src="./mission-control.html" title="Mission Control"
+                        url="profpowell.github.io/border-wc/demos/mission-control.html"></browser-window>
+        <a class="bw-open" href="./mission-control.html" aria-label="Open the Mission Control demo"></a>
+        <div class="meta"><span class="name">Mission Control</span><span class="desc">hud · console panels</span></div>
       </div>
     </div>
   </main>
