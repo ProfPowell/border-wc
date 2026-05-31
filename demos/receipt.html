@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Receipt — border-wc demos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ede4d3;
+      --ink: #3a2418;
+      --muted: #8a6a55;
+      --paper: oklch(0.985 0.045 92);
+      --accent: oklch(0.55 0.18 25);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0; min-height: 100vh;
+      background:
+        radial-gradient(ellipse at top, #f4ecdc 0%, var(--bg) 60%),
+        var(--bg);
+      color: var(--ink);
+      font-family: Fraunces, Georgia, serif;
+    }
+    body { padding: 40px clamp(20px, 5vw, 64px); }
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 40px;
+      font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted);
+    }
+    .topbar a { color: var(--accent); text-decoration: none; }
+    .lede {
+      font-family: "JetBrains Mono", monospace; font-size: 12px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent); margin: 0 0 12px;
+    }
+    h1 {
+      font-size: clamp(36px, 6vw, 64px); font-weight: 700;
+      letter-spacing: -0.02em; margin: 0 0 8px;
+      font-variation-settings: "opsz" 144;
+    }
+    .sub { color: var(--muted); margin: 0 0 48px; font-size: 18px; max-width: 60ch; }
+    .receipts { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; max-width: 1080px; }
+    border-wc { display: block; }
+    .receipt {
+      padding: 28px 26px;
+      min-height: 320px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px;
+      line-height: 1.55;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .receipt h2 {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 700; font-size: 22px; margin: 0;
+      text-align: center; letter-spacing: 0.01em;
+      font-variation-settings: "opsz" 40;
+    }
+    .meta { text-align: center; color: var(--muted); font-size: 11px; letter-spacing: 0.04em; }
+    .rule { border: 0; border-top: 1px dashed var(--muted); margin: 4px 0; }
+    .items { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+    .items li { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+    .items li b { font-weight: 500; color: var(--ink); }
+    .items li span { font-variant-numeric: tabular-nums; }
+    .total { display: flex; justify-content: space-between; font-weight: 700; font-size: 15px; margin-top: 4px; }
+    .footer {
+      text-align: center; font-size: 11px; color: var(--muted);
+      letter-spacing: 0.08em; margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <strong>RECEIPT</strong>
+    <a href="./" target="_top">&larr; Demos</a>
+  </div>
+
+  <p class="lede">Thank you for your order</p>
+  <h1>One ticket. Tear here.</h1>
+  <p class="sub">The <code>ticket</code> effect turns any block into a perforated paper stub — perfect for receipts, vouchers, admission, coupons, anything that wants to feel printed.</p>
+
+  <div class="receipts">
+    <border-wc effect="ticket" color="oklch(0.55 0.18 25)" thickness="2">
+      <article class="receipt">
+        <h2>Sunset Café</h2>
+        <p class="meta">Order #4012 · Counter 02 · 14:38</p>
+        <hr class="rule">
+        <ul class="items">
+          <li><b>Flat white</b><span>$4.50</span></li>
+          <li><b>Almond croissant</b><span>$3.75</span></li>
+          <li><b>Day pass · wifi</b><span>$2.00</span></li>
+        </ul>
+        <hr class="rule">
+        <div class="total"><span>Total</span><span>$10.25</span></div>
+        <p class="footer">— PAID · CARD ··3741 —</p>
+      </article>
+    </border-wc>
+
+    <border-wc effect="ticket" color="oklch(0.5 0.13 200)" thickness="2">
+      <article class="receipt">
+        <h2>The Marlow</h2>
+        <p class="meta">Admit one · Row J · Seat 14</p>
+        <hr class="rule">
+        <ul class="items">
+          <li><b>Feature</b><span>20:30</span></li>
+          <li><b>Trailers</b><span>20:15</span></li>
+          <li><b>Doors</b><span>20:00</span></li>
+        </ul>
+        <hr class="rule">
+        <div class="total"><span>Admit</span><span>One</span></div>
+        <p class="footer">— TEAR ALONG THE LINE —</p>
+      </article>
+    </border-wc>
+
+    <border-wc effect="ticket" color="oklch(0.55 0.14 130)" thickness="2">
+      <article class="receipt">
+        <h2>Coastal Bake</h2>
+        <p class="meta">Pickup · Tomorrow · 10am</p>
+        <hr class="rule">
+        <ul class="items">
+          <li><b>Sourdough loaf</b><span>$8.00</span></li>
+          <li><b>Cardamom bun ×2</b><span>$9.00</span></li>
+          <li><b>Marmalade jar</b><span>$6.50</span></li>
+        </ul>
+        <hr class="rule">
+        <div class="total"><span>Hold</span><span>23.50</span></div>
+        <p class="footer">— FRESH DAILY —</p>
+      </article>
+    </border-wc>
+  </div>
+
+  <script type="module" src="../src/border-wc.js"></script>
+</body>
+</html>

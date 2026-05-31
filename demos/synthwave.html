@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Synthwave — border-wc demos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0220;
+      --bg-2: #1a0436;
+      --fg: oklch(0.95 0.05 320);
+      --cyan: oklch(0.85 0.18 200);
+      --magenta: oklch(0.8 0.2 330);
+      --orange: oklch(0.85 0.18 60);
+      --muted: oklch(0.6 0.05 280);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0; min-height: 100vh;
+      background:
+        radial-gradient(ellipse at top, var(--bg-2) 0%, var(--bg) 60%),
+        linear-gradient(180deg, transparent 0%, transparent 70%,
+          color-mix(in oklch, var(--magenta), transparent 65%) 100%),
+        var(--bg);
+      color: var(--fg);
+      font-family: "Orbitron", sans-serif;
+    }
+    body {
+      padding: 40px clamp(20px, 5vw, 64px);
+      position: relative; overflow-x: hidden;
+    }
+    /* horizon grid */
+    body::after {
+      content: ""; position: fixed; left: 0; right: 0; bottom: 0;
+      height: 30vh; pointer-events: none;
+      background-image:
+        linear-gradient(to top,
+          color-mix(in oklch, var(--magenta), transparent 75%),
+          transparent 60%),
+        repeating-linear-gradient(to right,
+          color-mix(in oklch, var(--cyan), transparent 70%) 0 1px,
+          transparent 1px 80px),
+        repeating-linear-gradient(to top,
+          color-mix(in oklch, var(--cyan), transparent 65%) 0 1px,
+          transparent 1px 40px);
+      transform: perspective(400px) rotateX(60deg); transform-origin: bottom;
+      opacity: 0.55;
+    }
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 40px;
+      font-family: "JetBrains Mono", monospace; font-size: 12px;
+      color: var(--muted); position: relative; z-index: 1;
+    }
+    .topbar a { color: var(--cyan); text-decoration: none; text-shadow: 0 0 8px var(--cyan); }
+    .lede {
+      font-family: "JetBrains Mono", monospace; font-size: 12px;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--magenta); margin: 0 0 12px;
+      text-shadow: 0 0 12px color-mix(in oklch, var(--magenta), transparent 30%);
+    }
+    h1 {
+      font-size: clamp(40px, 7vw, 80px); font-weight: 900;
+      letter-spacing: -0.02em; margin: 0 0 8px;
+      background: linear-gradient(135deg, var(--cyan), var(--magenta) 50%, var(--orange));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      filter: drop-shadow(0 0 20px color-mix(in oklch, var(--magenta), transparent 60%));
+    }
+    .sub {
+      color: var(--muted); margin: 0 0 56px; font-size: 16px;
+      max-width: 60ch; font-family: "JetBrains Mono", monospace;
+    }
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px; max-width: 1080px;
+      position: relative; z-index: 1;
+    }
+    border-wc { display: block; }
+    .panel {
+      padding: 28px 26px; min-height: 200px;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .panel-label {
+      font-family: "JetBrains Mono", monospace; font-size: 11px;
+      letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--cyan);
+    }
+    .stat {
+      font-family: "Orbitron", sans-serif; font-weight: 900;
+      font-size: 48px; line-height: 1; letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--cyan), var(--magenta));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .delta {
+      font-family: "JetBrains Mono", monospace; font-size: 12px;
+      color: var(--orange); letter-spacing: 0.08em;
+    }
+    .meta {
+      margin-top: auto;
+      font-family: "JetBrains Mono", monospace; font-size: 11px;
+      color: var(--muted); letter-spacing: 0.06em;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <strong>SYNTHWAVE</strong>
+    <a href="./" target="_top">&larr; Demos</a>
+  </div>
+
+  <p class="lede">// dash · 84 · neon-grid</p>
+  <h1>Cruising on chrome.</h1>
+  <p class="sub">The <code>neon</code> effect on <code>mode="synthwave"</code> swaps the single stroke for a cyan→magenta→orange gradient with a sweeping scanline. Drop it on any panel.</p>
+
+  <div class="grid">
+    <border-wc effect="neon" mode="synthwave" thickness="3" radius="6" animate speed="2200">
+      <article class="panel">
+        <div class="panel-label">// users · online</div>
+        <div class="stat">2,481</div>
+        <div class="delta">▲ 12.4% past hour</div>
+        <div class="meta">stream · 38ms · west-1</div>
+      </article>
+    </border-wc>
+
+    <border-wc effect="neon" mode="synthwave" thickness="3" radius="6" animate speed="2400">
+      <article class="panel">
+        <div class="panel-label">// signal · rms</div>
+        <div class="stat">−13.2</div>
+        <div class="delta">▲ peak −6.8 dB</div>
+        <div class="meta">monitor · A · stereo</div>
+      </article>
+    </border-wc>
+
+    <border-wc effect="neon" mode="synthwave" thickness="3" radius="6" animate speed="2600">
+      <article class="panel">
+        <div class="panel-label">// throughput</div>
+        <div class="stat">7.4 K</div>
+        <div class="delta">▼ −2.1% past minute</div>
+        <div class="meta">queue · primary · drain</div>
+      </article>
+    </border-wc>
+  </div>
+
+  <script type="module" src="../src/border-wc.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mission Control — border-wc demos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: oklch(0.16 0.03 220);
+      --bg-2: oklch(0.20 0.04 220);
+      --fg: oklch(0.95 0.04 195);
+      --hud: oklch(0.82 0.15 195);
+      --hud-soft: oklch(0.62 0.12 195);
+      --amber: oklch(0.82 0.16 80);
+      --danger: oklch(0.7 0.22 25);
+      --muted: oklch(0.55 0.04 220);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0; min-height: 100vh;
+      background:
+        radial-gradient(ellipse at top, var(--bg-2) 0%, var(--bg) 70%),
+        var(--bg);
+      color: var(--fg);
+      font-family: "Share Tech Mono", monospace;
+    }
+    body { padding: 40px clamp(20px, 5vw, 64px); }
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 40px;
+      font-size: 12px; letter-spacing: 0.16em; color: var(--muted);
+      text-transform: uppercase;
+    }
+    .topbar a { color: var(--hud); text-decoration: none; }
+    .lede {
+      font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--amber); margin: 0 0 12px;
+    }
+    h1 {
+      font-family: Inter, system-ui, sans-serif;
+      font-size: clamp(36px, 6vw, 64px); font-weight: 700;
+      letter-spacing: -0.02em; margin: 0 0 8px;
+      color: var(--fg);
+    }
+    .sub {
+      color: var(--muted); margin: 0 0 56px; font-size: 16px;
+      max-width: 60ch; line-height: 1.6;
+    }
+    .grid {
+      display: grid; gap: 28px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      max-width: 1200px;
+    }
+    .row {
+      display: grid; gap: 28px;
+      grid-template-columns: 2fr 1fr;
+      max-width: 1200px; margin-top: 28px;
+    }
+    @media (max-width: 720px) { .row { grid-template-columns: 1fr; } }
+    border-wc { display: block; }
+    .panel {
+      padding: 22px 26px; min-height: 160px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .panel.tall { min-height: 240px; }
+    .panel .label {
+      font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--hud-soft);
+    }
+    .panel .value {
+      font-family: Inter, sans-serif; font-weight: 700;
+      font-size: 44px; line-height: 1; letter-spacing: -0.02em;
+      color: var(--fg);
+    }
+    .panel .unit { color: var(--hud); font-size: 18px; margin-left: 4px; font-weight: 400; }
+    .panel .bars {
+      display: flex; gap: 4px; height: 50px; align-items: flex-end;
+      margin-top: auto;
+    }
+    .panel .bars span {
+      flex: 1; background: linear-gradient(180deg, var(--hud), color-mix(in oklch, var(--hud), transparent 60%));
+      border-radius: 1px;
+    }
+    .status {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; letter-spacing: 0.08em;
+    }
+    .status .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--hud);
+      box-shadow: 0 0 8px var(--hud);
+    }
+    .status.warn .dot { background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+    .status.danger .dot { background: var(--danger); box-shadow: 0 0 8px var(--danger); }
+    .meta {
+      margin-top: auto; font-size: 11px; color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+    .events {
+      margin: 0; padding: 0; list-style: none;
+      display: grid; gap: 8px;
+      font-size: 13px; line-height: 1.4;
+    }
+    .events li { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; }
+    .events li .t { color: var(--hud-soft); }
+    .events li .e { color: var(--fg); }
+    .events li .v { color: var(--hud); letter-spacing: 0.08em; }
+    @keyframes blink { 50% { opacity: 0.35; } }
+    .blink { animation: blink 1.6s ease-in-out infinite; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <strong>Mission Control</strong>
+    <a href="./" target="_top">&larr; Demos</a>
+  </div>
+
+  <p class="lede">// orbiter · ops · live</p>
+  <h1>All systems nominal.</h1>
+  <p class="sub">The <code>hud</code> effect — corner brackets, edge ticks, a sweeping scan line — turns any block into a heads-up readout. Stacks cleanly across a console layout.</p>
+
+  <div class="grid">
+    <border-wc effect="hud" thickness="2" animate speed="2200">
+      <article class="panel">
+        <div class="label">// Altitude</div>
+        <div class="value">412<span class="unit">km</span></div>
+        <div class="meta">Δ +1.4 km/h · LEO</div>
+      </article>
+    </border-wc>
+
+    <border-wc effect="hud" thickness="2" animate speed="2400">
+      <article class="panel">
+        <div class="label">// Velocity</div>
+        <div class="value">7.67<span class="unit">km/s</span></div>
+        <div class="meta">ground-track · 28.5°</div>
+      </article>
+    </border-wc>
+
+    <border-wc effect="hud" thickness="2" animate speed="2600">
+      <article class="panel">
+        <div class="label">// Solar charge</div>
+        <div class="value">96<span class="unit">%</span></div>
+        <div class="meta">array A · array B · nominal</div>
+      </article>
+    </border-wc>
+  </div>
+
+  <div class="row">
+    <border-wc effect="hud" thickness="2" animate speed="3000">
+      <article class="panel tall">
+        <div class="label">// uplink · last 24h</div>
+        <div class="bars">
+          <span style="height:34%"></span><span style="height:62%"></span>
+          <span style="height:48%"></span><span style="height:71%"></span>
+          <span style="height:55%"></span><span style="height:80%"></span>
+          <span style="height:43%"></span><span style="height:65%"></span>
+          <span style="height:88%"></span><span style="height:74%"></span>
+          <span style="height:51%"></span><span style="height:66%"></span>
+          <span style="height:39%"></span><span style="height:58%"></span>
+          <span style="height:72%"></span><span style="height:83%"></span>
+          <span style="height:46%"></span><span style="height:69%"></span>
+        </div>
+        <ul class="events">
+          <li><span class="t">04:21</span><span class="e">handoff · gs-08 → gs-02</span><span class="v">OK</span></li>
+          <li><span class="t">04:18</span><span class="e">telemetry · packet 1.2 MB</span><span class="v">ACK</span></li>
+          <li><span class="t">04:12</span><span class="e">orbit · maneuver burn</span><span class="v">complete</span></li>
+        </ul>
+      </article>
+    </border-wc>
+
+    <border-wc effect="hud" thickness="2" animate speed="2800">
+      <article class="panel tall">
+        <div class="label">// status</div>
+        <div class="status"><span class="dot blink"></span> Comms · OK</div>
+        <div class="status"><span class="dot blink"></span> Thermal · OK</div>
+        <div class="status warn"><span class="dot blink"></span> Coolant · margin</div>
+        <div class="status"><span class="dot blink"></span> Attitude · OK</div>
+        <div class="meta">last check · 04:24:08 UTC</div>
+      </article>
+    </border-wc>
+  </div>
+
+  <script type="module" src="../src/border-wc.js"></script>
+</body>
+</html>
