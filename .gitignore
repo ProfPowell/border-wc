@@ -7,3 +7,8 @@ dist-site/
 test-results/
 playwright-report/
 .idea/
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
