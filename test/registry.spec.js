@@ -23,6 +23,8 @@ const ALL_EFFECTS = [
   'deco',
   'memphis',
   'opart',
+  'brutalist',
+  'aqua',
   'psychedelic',
   'plasma',
   'gooey',
@@ -57,10 +59,11 @@ for (const name of IMPLEMENTED) {
     const ok = await page.evaluate(() => {
       const host = document.getElementById('bw');
       // Effects mount either a child overlay (svg/canvas/div carrying
-      // data-border-wc) OR mutate the host directly (chroma sets
-      // data-border-wc-chroma on the host).
+      // data-border-wc) OR mutate the host directly, in which case they flag it
+      // with a host-level data-border-wc-* attribute (e.g. chroma, brutalist).
       return (
-        !!host.querySelector('[data-border-wc]') || host.hasAttribute('data-border-wc-chroma')
+        !!host.querySelector('[data-border-wc]') ||
+        [...host.attributes].some((a) => a.name.startsWith('data-border-wc'))
       );
     });
     expect(ok).toBe(true);

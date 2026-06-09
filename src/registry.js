@@ -28,6 +28,9 @@ export const EFFECTS = {
   deco: () => import('./effects/deco.js').then((m) => m.createDeco),
   memphis: () => import('./effects/memphis.js').then((m) => m.createMemphis),
   opart: () => import('./effects/opart.js').then((m) => m.createOpart),
+  // Eras
+  brutalist: () => import('./effects/brutalist.js').then((m) => m.createBrutalist),
+  aqua: () => import('./effects/aqua.js').then((m) => m.createAqua),
   // Trippy
   psychedelic: () => import('./effects/psychedelic.js').then((m) => m.createPsychedelic),
   plasma: () => import('./effects/plasma.js').then((m) => m.createPlasma),

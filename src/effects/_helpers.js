@@ -69,6 +69,24 @@ export function attachOverlaySvg(host, dataAttr) {
   return svg;
 }
 
+/**
+ * Attach a positioned, pointer-events:none <div> overlay to the host with the
+ * given `data-border-wc` value. Defaults to covering the host (inset:0); the
+ * caller overrides top/left/right/height/etc. as needed. Returns the div.
+ */
+export function attachLayer(host, dataAttr) {
+  ensurePositioned(host);
+  const el = document.createElement('div');
+  el.setAttribute('data-border-wc', dataAttr);
+  Object.assign(el.style, {
+    position: 'absolute',
+    inset: '0',
+    pointerEvents: 'none',
+  });
+  host.appendChild(el);
+  return el;
+}
+
 export const SVG_NS = SVGNS;
 
 // Inject a <style> tag once, keyed by `key`. Subsequent calls are no-ops.
