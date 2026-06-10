@@ -119,14 +119,6 @@ th {
 tr:last-child td { border-bottom: none; }
 tbody tr:hover { background: rgba(91,142,255,0.05); }
 
-footer {
-  text-align: center; padding: 32px;
-  opacity: 0.6; font-size: 13px;
-  border-top: 1px solid var(--color-border);
-  margin-top: 48px;
-}
-footer a { color: var(--color-primary); }
-
 /* ============================================================
    Demos hub grid (browser-window tiles with scroll-passthrough
    overlay link). The hub-specific JS lives in demos/demos-hub.js.
