@@ -5,7 +5,8 @@ import { attachLayer } from './_helpers.js';
 // host inline styles directly (capturing prior values for cleanup) and attaches
 // one pointer-events:none gloss layer.
 export function createAqua(host, params) {
-  const hue = params.color && params.color !== 'currentColor' ? params.color : 'oklch(0.62 0.17 240)';
+  const hue =
+    params.color && params.color !== 'currentColor' ? params.color : 'oklch(0.62 0.17 240)';
   const radius = Number.isFinite(params.radius) ? params.radius : 18;
 
   const prev = {

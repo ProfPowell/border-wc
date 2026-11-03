@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>border-wc — gallery</title>
-  <meta name="description" content="border-wc — 32 CSS-first border effects: aurora, chroma, neon, glitch, marquee bulbs, zigzag, waves, washi tape, marching ants, art deco, op-art, memphis, ticket, filmstrip, bunting, gooey, HUD, and more. Live knobs, copyable snippets.">
+  <meta name="description" content="border-wc — 34 CSS-first border effects: aurora, chroma, neon, glitch, marquee bulbs, zigzag, waves, washi tape, marching ants, art deco, op-art, memphis, ticket, filmstrip, bunting, gooey, HUD, and more. Live knobs, copyable snippets.">
   <script>
     (() => {
       const vb = new URL('../vb', document.baseURI).href.replace(/\/$/, '');
@@ -36,12 +36,12 @@
   <main class="content">
     <header class="page-head">
       <h1>border-wc</h1>
-      <p class="muted">Extreme border effects the platform under-serves — thirty-two of them, CSS-first. Tweak the knobs and copy the snippet.</p>
+      <p class="muted">Extreme border effects the platform under-serves — thirty-four of them, CSS-first. Tweak the knobs and copy the snippet.</p>
       <div class="group-tabs" id="groupTabs" role="tablist" aria-label="Effect groups">
         <button type="button" class="group-tab" role="tab" data-group="lines" aria-selected="true">Lines <span class="count">11</span></button>
-        <button type="button" class="group-tab" role="tab" data-group="glow" aria-selected="false">Glow <span class="count">7</span></button>
+        <button type="button" class="group-tab" role="tab" data-group="glow" aria-selected="false">Glow <span class="count">8</span></button>
         <button type="button" class="group-tab" role="tab" data-group="glitch" aria-selected="false">Glitch <span class="count">7</span></button>
-        <button type="button" class="group-tab" role="tab" data-group="decor" aria-selected="false">Decor <span class="count">7</span></button>
+        <button type="button" class="group-tab" role="tab" data-group="decor" aria-selected="false">Decor <span class="count">8</span></button>
       </div>
     </header>
 
@@ -302,7 +302,26 @@
             <label for="kn-opart-radius">radius</label>   <input id="kn-opart-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="6">
           </div>
           <code-block language="html" theme="dark"></code-block>
-        </article><article class="effect-card" data-group="glitch" data-border-effect="psychedelic" data-sample-label="Rainbow road">
+        </article><article class="effect-card" data-group="decor" data-border-effect="brutalist" data-sample-label="Bold move">
+          <h3>brutalist</h3>
+          <border-wc effect="brutalist"><div class="sample">Bold move</div></border-wc>
+          <div class="knobs">
+            <label for="kn-brutalist-color">color</label>     <input id="kn-brutalist-color" data-knob="color" type="color" value="#1a1a1a">
+            <label for="kn-brutalist-thick">thickness</label> <input id="kn-brutalist-thick" data-knob="thickness" type="range" min="3" max="10" step="1" value="4">
+            <label for="kn-brutalist-radius">radius</label>   <input id="kn-brutalist-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="4">
+          </div>
+          <code-block language="html" theme="dark"></code-block>
+        </article>
+        <article class="effect-card" data-group="glow" data-border-effect="aqua" data-sample-label="Gel button">
+          <h3>aqua</h3>
+          <border-wc effect="aqua"><div class="sample">Gel button</div></border-wc>
+          <div class="knobs">
+            <label for="kn-aqua-color">color</label>     <input id="kn-aqua-color" data-knob="color" type="color" value="#2e8fe0">
+            <label for="kn-aqua-radius">radius</label>   <input id="kn-aqua-radius" data-knob="radius" type="range" min="0" max="40" step="2" value="18">
+          </div>
+          <code-block language="html" theme="dark"></code-block>
+        </article>
+        <article class="effect-card" data-group="glitch" data-border-effect="psychedelic" data-sample-label="Rainbow road">
           <h3>psychedelic</h3>
           <border-wc effect="psychedelic" animate><div class="sample">Rainbow road</div></border-wc>
           <div class="knobs">

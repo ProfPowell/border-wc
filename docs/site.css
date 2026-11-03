@@ -259,6 +259,12 @@ body[data-active-group="decor"]  .effect-card:not([data-group="decor"]) {
   font-style: italic;
   font-size: 18px;
 }
+/* These effects paint the host itself, so the sample must not cover the fill. */
+.effect-card[data-border-effect="aqua"] .sample,
+.effect-card[data-border-effect="brutalist"] .sample {
+  background: transparent;
+  color: inherit;
+}
 .effect-card .knobs {
   display: grid;
   grid-template-columns: auto 1fr;

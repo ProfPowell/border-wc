@@ -1,4 +1,4 @@
-// Group-tab driver for docs/index.html. All 32 effect cards live in a single
+// Group-tab driver for docs/index.html. All effect cards live in a single
 // grid; we show only one group at a time via `body[data-active-group=…]`
 // CSS rules in site.css. Hiding inactive groups with `display: none` also
 // means their <border-wc>s never intersect the viewport, so the IO-based

@@ -61,15 +61,16 @@
         <table>
           <thead><tr><th>Attribute</th><th>Description</th></tr></thead>
           <tbody>
-            <tr><td><code>effect</code></td><td>One of thirty-two effects — see the <a href="#catalog">Effects catalog</a> below.</td></tr>
+            <tr><td><code>effect</code></td><td>One of thirty-four effects — see the <a href="#catalog">Effects catalog</a> below.</td></tr>
             <tr><td><code>color</code></td><td>Stroke / particle color (any CSS color; defaults to <code>currentColor</code>).</td></tr>
             <tr><td><code>thickness</code></td><td>Stroke width in px (default 2).</td></tr>
             <tr><td><code>speed</code></td><td>Animation duration in ms (default 1000).</td></tr>
             <tr><td><code>radius</code></td><td>Corner radius in px. Falls back to the host's computed <code>border-radius</code>.</td></tr>
             <tr><td><code>animate</code></td><td>Boolean. When present, plays the entrance / loop animation.</td></tr>
-            <tr><td><code>mode</code></td><td>Effect-specific placement mode (e.g. <code>center</code>).</td></tr>
+            <tr><td><code>mode</code></td><td>Effect-specific variant (e.g. <code>synthwave</code> on <code>neon</code>).</td></tr>
             <tr><td><code>trigger</code></td><td>Effect-specific reveal trigger (e.g. <code>time</code> | <code>scroll</code> on <code>draw</code>).</td></tr>
-            <tr><td><code>motion</code></td><td><code>auto</code> | <code>reduce</code> | <code>force</code> — overrides <code>prefers-reduced-motion</code>.</td></tr>
+            <tr><td><code>motion</code></td><td><code>auto</code> | <code>reduce</code> | <code>force</code> — <code>reduce</code> forces static, <code>force</code> forces animation, <code>auto</code> (default) follows <code>prefers-reduced-motion</code> and vanilla-breeze's root <code>data-motion-reduced</code>, re-applying if either changes.</td></tr>
+            <tr><td><code>eager</code></td><td>Boolean. Applies on connect instead of waiting until the host nears the viewport.</td></tr>
           </tbody>
         </table>
       </div>
@@ -81,6 +82,11 @@
   --border-wc-thickness: 3px;
 }</code-block>
 
+      <h3>Methods</h3>
+      <ul>
+        <li><code>refresh()</code> — re-reads attributes and custom properties, then re-applies the effect.</li>
+      </ul>
+
       <h3>Events</h3>
       <ul>
         <li><code>border-wc:effect-applied</code> — fired once after a successful apply. <code>detail.effect</code> is the effect name.</li>
@@ -91,7 +97,7 @@
 
     <section id="catalog">
       <h2>Effects catalog</h2>
-      <p>Nineteen effects ship today, grouped into seven families. Each behaves under <code>prefers-reduced-motion: reduce</code> — motion-heavy effects render a static end-state, one-shot effects skip the reveal animation.</p>
+      <p>Thirty-four effects ship today, grouped into families. Each behaves under <code>prefers-reduced-motion: reduce</code> and vanilla-breeze's <code>data-motion-reduced</code> — motion-heavy effects render a static end-state, one-shot effects skip the reveal animation.</p>
       <div class="table-wrap">
         <table>
           <thead><tr><th>Effect</th><th>Family</th><th>Renderer</th><th>Notes</th></tr></thead>
@@ -117,6 +123,8 @@
             <tr><td><code>deco</code></td><td>Pattern</td><td>svg</td><td>Art Deco: double stroked perimeter + radiating sunburst fans at each corner.</td></tr>
             <tr><td><code>memphis</code></td><td>Pattern</td><td>svg</td><td>Memphis confetti: arc-length sampler scatters mixed shapes with staggered bob animation.</td></tr>
             <tr><td><code>opart</code></td><td>Pattern</td><td>div + mask-composite</td><td>Op-Art moiré ring: crossed <code>repeating-linear-gradient</code> stripes masked into a perimeter band, shifted for shimmer.</td></tr>
+            <tr><td><code>brutalist</code></td><td>Eras</td><td>host styles</td><td>Neo-brutalist thick border, hard offset shadow, and flat accent fill, with a press-in shift on hover. Replaces the host's background and text color while applied.</td></tr>
+            <tr><td><code>aqua</code></td><td>Eras</td><td>host styles + div</td><td>Y2K glossy gel: gradient fill from <code>color</code>, inset highlights, and a top-half gloss layer. Replaces the host's background and sets white text while applied.</td></tr>
             <tr><td><code>psychedelic</code></td><td>Trippy</td><td>svg</td><td>Rainbow gradient stroke + hue-rotate + marching dashes.</td></tr>
             <tr><td><code>plasma</code></td><td>Trippy</td><td>canvas</td><td>HSL-cycling glow piecewise along the perimeter.</td></tr>
             <tr><td><code>gooey</code></td><td>Trippy</td><td>svg + feColorMatrix</td><td>Metaball ring: feGaussianBlur + alpha-boost ColorMatrix merge blobs orbiting along the perimeter via <code>offset-path</code>.</td></tr>
@@ -147,7 +155,7 @@
 
     <section id="data-border-effect">
       <h2>Attribute binder — <code>data-border-effect</code></h2>
-      <p>border-wc shares the <code>data-border-effect</code> attribute with vanilla-breeze's base tier. Base values (<code>spin</code>, <code>pulse</code>, <code>march</code>, <code>hue-cycle</code>, <code>breathe</code>, <code>corner-trace</code>) are owned by vanilla-breeze's CSS — border-wc ignores them. Extreme values — the thirty-two effects in the catalog above — are handled here.</p>
+      <p>border-wc shares the <code>data-border-effect</code> attribute with vanilla-breeze's base tier. Base values (<code>spin</code>, <code>pulse</code>, <code>march</code>, <code>hue-cycle</code>, <code>breathe</code>, <code>trace</code>) are owned by vanilla-breeze's CSS — border-wc ignores them. Extreme values — the thirty-four effects in the catalog above — are handled here.</p>
       <p>To opt in to extreme effects without writing a <code>&lt;border-wc&gt;</code> wrapper, import the binder once:</p>
       <code-block theme="dark" language="javascript">import '@profpowell/border-wc/attr';</code-block>
       <p>Then annotate any element:</p>
