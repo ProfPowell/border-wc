@@ -49,6 +49,7 @@ const VB_BUILD_ICONS = [
   'chevron-up',
   'x',
   'circle',
+  'github',
 ];
 const vbAssets = {
   name: 'border-wc:vb-assets',

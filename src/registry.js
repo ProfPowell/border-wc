@@ -50,7 +50,7 @@ export const EFFECTS = {
 
 // Effect names the JS tier owns. The data-border-effect binder uses this to
 // tell extreme values apart from base values (spin/pulse/march/hue-cycle/
-// breathe/corner-trace), which vanilla-breeze CSS renders.
+// breathe/trace), which vanilla-breeze CSS renders.
 export const EXTREME = Object.keys(EFFECTS);
 
 // Make an element a positioning context so absolute overlays fit it.

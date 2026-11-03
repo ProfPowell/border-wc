@@ -3,7 +3,7 @@
 // are vanilla-breeze CSS and ignored here. Importing this module auto-scans
 // the document and watches for changes. Mirrors @profpowell/gl-wc/data-bg.
 import { EFFECTS, EXTREME, styleHost } from './registry.js';
-import { readParams, reducedMotion } from './params.js';
+import { onMotionChange, readParams, reducedMotion } from './params.js';
 
 // el → { value, cleanup, token }. WeakMap so detached nodes are collectable.
 const bound = new WeakMap();
@@ -49,10 +49,15 @@ async function applyTo(el) {
     return;
   }
   const cur = bound.get(el);
-  if (!cur || cur.token !== token || !el.isConnected) return; // superseded mid-load
+  if (!cur || cur.token !== token) return; // superseded mid-load
+  if (!el.isConnected) {
+    bound.delete(el); // removed mid-load: a later bind must start over
+    return;
+  }
 
   styleHost(el);
   const params = { ...readParams(el), reduce: reducedMotion(el) };
+  cur.reduce = params.reduce;
   try {
     cur.cleanup = create(el, params) || null;
   } catch {
@@ -100,13 +105,27 @@ function startWatching() {
   });
 }
 
+// Re-applies effects whose motion state no longer matches the page preference.
+function refreshMotion() {
+  document.querySelectorAll('[data-border-effect]').forEach((el) => {
+    const cur = bound.get(el);
+    if (!cur || cur.reduce === undefined || cur.reduce === reducedMotion(el)) return;
+    teardown(el);
+    applyTo(el);
+  });
+}
+
 function init() {
   bindBorderEffects();
   startWatching();
+  onMotionChange(refreshMotion);
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init, { once: true });
-} else {
-  init();
+// Importing on a server is a no-op, so SSR frameworks can bundle this module.
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
 }
