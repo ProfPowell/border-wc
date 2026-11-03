@@ -4,7 +4,7 @@ All notable changes to `@profpowell/border-wc` are recorded here. The format fol
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow
 [Semantic Versioning](https://semver.org/) (pre-1.0, so a minor bump may break).
 
-## [0.3.0] — Unreleased
+## [0.3.0] — 2026-11-03
 
 ### Added
 
