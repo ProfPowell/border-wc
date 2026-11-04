@@ -281,3 +281,9 @@ body[data-active-group="decor"]  .effect-card:not([data-group="decor"]) {
   width: 100%;
 }
 .effect-card code-block { font-size: 12px; margin: 0; }
+
+/* Multiply nearly erases washi on a dark surface. VB resolves auto to a concrete
+   data-mode, so this one selector also covers an OS dark preference. */
+:root[data-mode='dark'] {
+  --washi-blend: normal;
+}
