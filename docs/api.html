@@ -158,6 +158,7 @@
       <p>border-wc shares the <code>data-border-effect</code> attribute with vanilla-breeze's base tier. Base values (<code>spin</code>, <code>pulse</code>, <code>march</code>, <code>hue-cycle</code>, <code>breathe</code>, <code>trace</code>) are owned by vanilla-breeze's CSS — border-wc ignores them. Extreme values — the thirty-four effects in the catalog above — are handled here.</p>
       <p>To opt in to extreme effects without writing a <code>&lt;border-wc&gt;</code> wrapper, import the binder once:</p>
       <code-block theme="dark" language="javascript">import '@profpowell/border-wc/attr';</code-block>
+      <p class="muted">From a CDN, use <code>https://unpkg.com/@profpowell/border-wc/attr</code>. jsDelivr does not resolve that shortcut, so use the file path there: <code>https://cdn.jsdelivr.net/npm/@profpowell/border-wc/dist/data-border-effect.js</code>.</p>
       <p>Then annotate any element:</p>
       <code-block theme="dark" language="html">&lt;article data-border-effect="squiggle"&gt;…&lt;/article&gt;</code-block>
       <p>Params come from <code>--border-wc-*</code> CSS custom properties (the same set as on the element). The binder auto-scans on import and watches the DOM for added / changed / removed nodes.</p>

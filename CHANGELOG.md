@@ -4,6 +4,18 @@ All notable changes to `@profpowell/border-wc` are recorded here. The format fol
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow
 [Semantic Versioning](https://semver.org/) (pre-1.0, so a minor bump may break).
 
+## [Unreleased]
+
+### Fixed
+
+- Docs site: the dark-by-default setting never ran in production builds, because
+  the `sideEffects` list let the bundler drop `docs/prefer-dark.js`. A stored mode,
+  including an explicit Auto, is now respected across reloads.
+
+### Documentation
+
+- jsDelivr does not resolve the `/attr` shortcut, so the docs now give its file path.
+
 ## [0.3.0] — 2026-11-03
 
 ### Added

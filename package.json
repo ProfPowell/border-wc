@@ -30,7 +30,11 @@
   ],
   "sideEffects": [
     "dist/border-wc.js",
-    "dist/data-border-effect.js"
+    "dist/data-border-effect.js",
+    "src/border-wc.js",
+    "src/data-border-effect.js",
+    "docs/**",
+    "demos/**"
   ],
   "customElements": "custom-elements.json",
   "keywords": [

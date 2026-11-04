@@ -45,3 +45,9 @@ test('README documents the full element API', () => {
     expect(readme, term).toContain(term);
   }
 });
+
+test('docs give jsDelivr users a binder path that resolves', () => {
+  const url = 'cdn.jsdelivr.net/npm/@profpowell/border-wc/dist/data-border-effect.js';
+  expect(read('README.md')).toContain(url);
+  expect(read('docs/api.html')).toContain(url);
+});
