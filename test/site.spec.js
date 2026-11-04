@@ -37,3 +37,31 @@ for (const [choice, expected] of [
     expect(await mode(page)).toBe(expected);
   });
 }
+
+async function washiBlend(page) {
+  // The card is hidden until its gallery tab is active.
+  await page.locator('#groupTabs .group-tab[data-group="decor"]').click();
+  const host = page.locator('border-wc[effect="washi"]').first();
+  await host.scrollIntoViewIfNeeded();
+  const strip = host.locator('.bwc-strip').first();
+  await expect(strip).toBeAttached();
+  return strip.evaluate((el) => getComputedStyle(el).mixBlendMode);
+}
+
+test('washi drops multiply in dark mode and restores it when switched to light', async ({
+  page,
+}) => {
+  await firstVisit(page);
+  expect(await washiBlend(page)).toBe('normal');
+  await page.evaluate(() => document.querySelector('theme-picker input[value="light"]').click());
+  await expect.poll(() => mode(page)).toBe('light');
+  expect(await washiBlend(page)).toBe('multiply');
+});
+
+test('washi drops multiply when auto resolves to an OS dark preference', async ({ page }) => {
+  await firstVisit(page);
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await page.evaluate(() => document.querySelector('theme-picker input[value="auto"]').click());
+  await expect.poll(() => pickerChoice(page)).toBe('auto');
+  expect(await washiBlend(page)).toBe('normal');
+});

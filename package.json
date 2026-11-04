@@ -1,6 +1,6 @@
 {
   "name": "@profpowell/border-wc",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Light-DOM web component for high-touch border effects: neon, aurora, marquee bulbs, washi tape, and more than thirty others the platform under-serves.",
   "license": "MIT",
   "type": "module",

@@ -95,3 +95,22 @@ test('cleanup: removing effect leaves no washi root + shared filter survives', a
   expect(result.hasRoot).toBe(false);
   expect(result.filterStillThere).toBe(true);
 });
+
+test('--washi-blend changes the blend on live strips without remounting them', async ({
+  page,
+}) => {
+  await page.goto('/test/test-page.html');
+  const result = await page.evaluate(async () => {
+    const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+    const el = document.getElementById('bw');
+    el.setAttribute('effect', 'washi');
+    await wait(150);
+    const strip = el.querySelector('[data-border-wc="washi"] .bwc-strip');
+    const before = getComputedStyle(strip).mixBlendMode;
+    // Set on the document root, as a theme would, to prove it inherits to strips.
+    document.documentElement.style.setProperty('--washi-blend', 'normal');
+    const after = getComputedStyle(strip).mixBlendMode;
+    return { before, after, stillMounted: strip.isConnected };
+  });
+  expect(result).toEqual({ before: 'multiply', after: 'normal', stillMounted: true });
+});

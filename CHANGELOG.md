@@ -6,11 +6,21 @@ All notable changes to `@profpowell/border-wc` are recorded here. The format fol
 
 ## [Unreleased]
 
+## [0.3.1] — 2026-11-04
+
+### Added
+
+- `--washi-blend` sets the blend mode of `washi` strips. It defaults to `multiply`, so
+  existing pages look the same, and changing it updates mounted strips, so a theme
+  rule can switch it. Use `--washi-blend: normal` on dark surfaces, where `multiply`
+  nearly erases the tape.
+
 ### Fixed
 
 - Docs site: the dark-by-default setting never ran in production builds, because
   the `sideEffects` list let the bundler drop `docs/prefer-dark.js`. A stored mode,
   including an explicit Auto, is now respected across reloads.
+- Docs site: `washi` is visible in dark mode.
 
 ### Documentation
 
