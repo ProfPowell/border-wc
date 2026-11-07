@@ -15,7 +15,7 @@ const WASHI_CSS = `
     position: absolute;
     background: var(--bwc-washi-bg, none);
     background-color: var(--pat-a, currentColor);
-    mix-blend-mode: multiply;
+    mix-blend-mode: var(--washi-blend, multiply);
     box-shadow: 0 2px 4px oklch(0 0 0 / .16);
     transform-origin: center;
   }

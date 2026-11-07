@@ -72,6 +72,9 @@ Opt in once and annotate any element — no `<border-wc>` wrapper needed:
 <article data-border-effect="squiggle">…</article>
 ```
 
+jsDelivr does not resolve the `/attr` shortcut, so use the file path there:
+`https://cdn.jsdelivr.net/npm/@profpowell/border-wc/dist/data-border-effect.js`.
+
 The binder applies the **extreme** effects (all thirty-four) directly to the
 element and watches the DOM for added/changed/removed nodes. **Base** values
 (`spin`, `pulse`, `march`, `hue-cycle`, `breathe`, `trace`) are owned by vanilla-breeze's CSS and ignored here.
